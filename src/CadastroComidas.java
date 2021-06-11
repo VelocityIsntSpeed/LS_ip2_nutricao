@@ -1,19 +1,30 @@
+import java.util.ArrayList;
 
 public class CadastroComidas {
-	private Comida[] comidas;
+	private ArrayList<Comida> comidas;
 	
-	public CadastroComidas(Comida[] comidas) {
-		super();
-		this.comidas = comidas;
-	}
-
-	public Comida[] getComidas() {
-		return comidas;
-	}
-
-	public void setComidas(Comida[] comidas) {
-		this.comidas = comidas;
+	// Adiciona uma comida. */
+	public void add(Comida arg) {
+		if (!comidas.contains(arg)) {
+			comidas.add(arg);
+		}
+		// TODO: Não deixar adicionar nulos
 	}
 	
+	/** Busca uma comida por nome. */
+	public Comida buscar(String nome) {
+		for (Comida comida : comidas) {
+			if (comida.getNome().equals(nome)) {
+				return comida;
+			}
+		}
+		// Se não for encontrado
+		return null;
+	}
+	
+	/** Remove uma comida. */
+	public boolean remover(Comida arg) {
+		return comidas.remove(arg);
+	}
 	
 }
