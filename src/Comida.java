@@ -1,12 +1,12 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Comida {
 	private InfoNutricional infoNutricional;
 	private String nome;
-	private Comida[] ingredientes;
+	private ArrayList<Comida> ingredientes;
 	
 	
-	public Comida(InfoNutricional infoNutricional, String nome, Comida[] ingredientes) {
+	public Comida(InfoNutricional infoNutricional, String nome, ArrayList<Comida> ingredientes) {
 		super();
 		this.infoNutricional = infoNutricional;
 		this.nome = nome;
@@ -28,14 +28,14 @@ public class Comida {
 		this.nome = nome;
 	}
 	
-	public Comida[] getIngredientes() {
+	public ArrayList<Comida> getIngredientes() {
 		return ingredientes;
 	}
-	public void setIngredientes(Comida[] ingredientes) {
+	public void setIngredientes(ArrayList<Comida> ingredientes) {
 		this.ingredientes = ingredientes;
 	}
 	
-	public String possuiIngredientes() {
+	private String possuiIngredientes() {
 		if (this.ingredientes != null) {
 			return "Sim";
 		}
