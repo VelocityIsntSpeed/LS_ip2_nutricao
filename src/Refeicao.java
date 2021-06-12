@@ -2,6 +2,7 @@ import java.time.LocalDateTime;
 
 public class Refeicao {
 	private Comida comidas;
+	/** Hora em que a refeicao foi consumida. */
 	private LocalDateTime dateTime;
 	
 	
