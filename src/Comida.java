@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Comida {
 	private InfoNutricional infoNutricional;
@@ -33,6 +34,21 @@ public class Comida {
 	public void setIngredientes(Comida[] ingredientes) {
 		this.ingredientes = ingredientes;
 	}
+	
+	public String possuiIngredientes() {
+		if (this.ingredientes != null) {
+			return "Sim";
+		}
+		return "Não";
+	}
+
+
+	@Override
+	public String toString() {
+		return "Comida: " + nome + "/nPossui Ingredientes: " 
+				+ this.possuiIngredientes() + "/nInformação Nutricional: " + infoNutricional;
+	}
+	
 	
 	
 }

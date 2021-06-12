@@ -31,6 +31,12 @@ public class InfoNutricional {
 	public void setCarboidratos(double carboidratos) {
 		this.carboidratos = carboidratos;
 	}
+
+	@Override
+	public String toString() {
+		return "Valor Energetico:" + valEnergetico + ", proteína=" + proteina + ", carboidratos:"
+				+ carboidratos;
+	}
 	
 	
 }
