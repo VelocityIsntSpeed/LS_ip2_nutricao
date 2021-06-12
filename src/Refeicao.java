@@ -1,22 +1,22 @@
 import java.time.LocalDateTime;
 
 public class Refeicao {
-	private Comida comidas;
+	private Comida comida;
 	/** Hora em que a refeicao foi consumida. */
 	private LocalDateTime dateTime;
 	
 	
 	public Refeicao(Comida comidas, LocalDateTime dateTime) {
 		super();
-		this.comidas = comidas;
+		this.comida = comidas;
 		this.dateTime = dateTime;
 	}
 	
 	public Comida getComidas() {
-		return comidas;
+		return comida;
 	}
 	public void setComidas(Comida comidas) {
-		this.comidas = comidas;
+		this.comida = comidas;
 	}
 	public LocalDateTime getDateTime() {
 		return dateTime;
