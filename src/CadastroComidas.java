@@ -27,6 +27,12 @@ public class CadastroComidas {
 		return comidas.remove(arg);
 	}
 
+	
+	public String listarComidas() {
+		//Será modificada futuramente de maneira a retornar algo mais útil para a GUI
+		return this.toString();
+	}
+	
 	@Override
 	public String toString() {
 		String strTemp = "";
