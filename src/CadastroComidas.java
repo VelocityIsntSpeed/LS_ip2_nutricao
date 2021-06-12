@@ -26,5 +26,16 @@ public class CadastroComidas {
 	public boolean remover(Comida arg) {
 		return comidas.remove(arg);
 	}
+
+	@Override
+	public String toString() {
+		String strTemp = "";
+		for(int i = 0; i < comidas.size(); i++) {
+			strTemp = strTemp + comidas.get(i).toString() + "/n";
+		}
+		return "Comidas cadastradas: /n" + strTemp;
+	}
+	
+	
 	
 }
