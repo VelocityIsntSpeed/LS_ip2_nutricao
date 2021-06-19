@@ -1,13 +1,18 @@
 
-public class InfoNutricional {
-	private double valEnergetico;
-	private double proteina;
-	private double carboidratos;
-	
-	
+/** Representa uma lista de nutrientes. */
+public final class InfoNutricional {
+	private final double valEnergetico;
+	private final double proteina;
+	private final double carboidratos;
+	// TODO: O resto dos nutrientes
 	
 	public InfoNutricional(double valEnergetico, double proteina, double carboidratos) {
 		super();
+		
+		if (valEnergetico < 0 || proteina < 0 || carboidratos < 0) {
+			throw new IllegalArgumentException("O nutriente não pode ser negativo.");
+		}
+		
 		this.valEnergetico = valEnergetico;
 		this.proteina = proteina;
 		this.carboidratos = carboidratos;
@@ -16,20 +21,11 @@ public class InfoNutricional {
 	public double getValEnergetico() {
 		return valEnergetico;
 	}
-	public void setValEnergetico(double valEnergetico) {
-		this.valEnergetico = valEnergetico;
-	}
 	public double getProteina() {
 		return proteina;
 	}
-	public void setProteina(double proteina) {
-		this.proteina = proteina;
-	}
 	public double getCarboidratos() {
 		return carboidratos;
-	}
-	public void setCarboidratos(double carboidratos) {
-		this.carboidratos = carboidratos;
 	}
 
 	@Override
@@ -37,6 +33,4 @@ public class InfoNutricional {
 		return "Valor Energetico:" + valEnergetico + ", proteína=" + proteina + ", carboidratos:"
 				+ carboidratos;
 	}
-	
-	
 }
