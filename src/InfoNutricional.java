@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 /** Representa uma lista de nutrientes. */
 public final class InfoNutricional {
@@ -32,5 +33,25 @@ public final class InfoNutricional {
 	public String toString() {
 		return "Valor Energetico:" + valEnergetico + ", proteína=" + proteina + ", carboidratos:"
 				+ carboidratos;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(carboidratos, proteina, valEnergetico);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		// Gerado automaticamente pelo Eclipse. Não sei porque o doubleToLongBits, tem a ver com -0.0 ou NaN.
+		InfoNutricional other = (InfoNutricional) obj;
+		return Double.doubleToLongBits(carboidratos) == Double.doubleToLongBits(other.carboidratos)
+				&& Double.doubleToLongBits(proteina) == Double.doubleToLongBits(other.proteina)
+				&& Double.doubleToLongBits(valEnergetico) == Double.doubleToLongBits(other.valEnergetico);
 	}
 }
