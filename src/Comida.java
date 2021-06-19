@@ -1,31 +1,29 @@
 import java.util.ArrayList;
 
 public class Comida {
-	private InfoNutricional infoNutricional;
 	private String nome;
+	private InfoNutricional infoNutricional;
 	private ArrayList<Comida> ingredientes;
 	
-	
-	public Comida(InfoNutricional infoNutricional, String nome, ArrayList<Comida> ingredientes) {
+	public Comida(String nome, InfoNutricional infoNutricional, ArrayList<Comida> ingredientes) {
 		super();
-		this.infoNutricional = infoNutricional;
 		this.nome = nome;
+		this.infoNutricional = infoNutricional;
 		this.ingredientes = ingredientes;
 	}
-	
+
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	
 	public InfoNutricional getInfoNutricional() {
 		return infoNutricional;
 	}
 	public void setInfoNutricional(InfoNutricional infoNutricional) {
 		this.infoNutricional = infoNutricional;
-	}
-	
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 	
 	public ArrayList<Comida> getIngredientes() {
@@ -41,14 +39,10 @@ public class Comida {
 		}
 		return "Não";
 	}
-
-
+	
 	@Override
 	public String toString() {
 		return "Comida: " + nome + "/nPossui Ingredientes: " 
 				+ this.possuiIngredientes() + "/nInformação Nutricional: " + infoNutricional;
 	}
-	
-	
-	
 }
