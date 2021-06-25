@@ -25,5 +25,11 @@ public class Refeicao {
 		this.dateTime = dateTime;
 	}
 	
-	
+	public String toString() {
+		String strTemp = "";
+		for(int i = 0; i < comidas.length; i++) {
+			strTemp = strTemp + comidas[i].toString() + "/n";
+		}
+		return "Comidas presentes na refeição: /n" + strTemp;
+	}
 }
