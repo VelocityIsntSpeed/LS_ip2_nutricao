@@ -5,7 +5,7 @@ public class RepositorioComidas {
 	
 	// Adiciona uma comida. */
 	public void add(Comida arg) {
-		if ((!comidas.contains(arg)) && arg != null) {
+		if (arg != null && !comidas.contains(arg)) {
 			comidas.add(arg);
 		}
 		
