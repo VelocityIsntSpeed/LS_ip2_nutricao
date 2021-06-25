@@ -39,6 +39,11 @@ public final class InfoNutricional {
 	public int hashCode() {
 		return Objects.hash(carboidratos, proteina, valEnergetico);
 	}
+	
+	public InfoNutricional soma(InfoNutricional info) {
+		InfoNutricional temp = new InfoNutricional(this.valEnergetico+ info.getValEnergetico(), this.proteina + info.getProteina(), this.carboidratos + info.getCarboidratos());
+		return temp;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
