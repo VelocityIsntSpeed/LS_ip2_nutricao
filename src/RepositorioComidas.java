@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
-public class CadastroComidas {
+public class RepositorioComidas {
 	private ArrayList<Comida> comidas;
 	
 	// Adiciona uma comida. */
 	public void add(Comida arg) {
-		if (!comidas.contains(arg)) {
+		if ((!comidas.contains(arg)) && arg != null) {
 			comidas.add(arg);
 		}
-		// TODO: Não deixar adicionar nulos
+		
 	}
 	
 	/** Busca uma comida por nome. */
