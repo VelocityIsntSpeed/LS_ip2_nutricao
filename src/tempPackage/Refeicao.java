@@ -1,5 +1,7 @@
 package tempPackage;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class Refeicao {
 	private Comida[] comidas;
@@ -27,10 +29,18 @@ public class Refeicao {
 	}
 	
 	public String toString() {
-		String strTemp = "";
-		for(int i = 0; i < comidas.length; i++) {
-			strTemp = strTemp + comidas[i].toString() + "/n";
+		String strTemp = String.format("Refeicao (%s):",
+				dateTime.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
+		
+		if (comidas.length == 0) {
+			return strTemp + "(vazio)";
 		}
-		return "Comidas presentes na refeição: /n" + strTemp;
+		else {
+			strTemp += "\n";
+			for (Comida comida : comidas) {
+				strTemp += "- " + comida.toString() + "\n";
+			}
+			return strTemp;
+		}
 	}
 }

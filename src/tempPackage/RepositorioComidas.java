@@ -31,10 +31,17 @@ public class RepositorioComidas {
 	
 	@Override
 	public String toString() {
-		String strTemp = "";
-		for(int i = 0; i < comidas.size(); i++) {
-			strTemp = strTemp + comidas.get(i).toString() + "/n";
+		String strTemp = "RepositorioComidas:";
+		
+		if (comidas.size() == 0) {
+			return strTemp + "(vazio)";
 		}
-		return "Comidas cadastradas: /n" + strTemp;
+		else {
+			strTemp += "\n";
+			for (Comida comida : comidas) {
+				strTemp += "- " + comida.toString() + "\n";
+			}
+			return strTemp;
+		}
 	}
 }

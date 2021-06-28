@@ -1,6 +1,7 @@
 package tempPackage;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,15 +21,23 @@ public class Test extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		
 		// Inicialização dos dados (temporário, só para testes)
+		System.out.println(repoComidas);
+		
 		InfoNutricional infoNutZero = new InfoNutricional(0, 0, 0);
 		System.out.println(infoNutZero);
 		
 		Comida arroz = new Comida("Arroz", infoNutZero);
 		System.out.println(arroz);
 		
-		System.out.println(repoComidas);
+		Comida pastaDeAmendoim = new Comida("Pasta de Amendoim", infoNutZero);
+		
 		repoComidas.add(arroz);
+		repoComidas.add(pastaDeAmendoim);
+		repoComidas.add(arroz); // duplicado
 		System.out.println(repoComidas);
+		
+		Refeicao refeicao = new Refeicao(new Comida[]{arroz, pastaDeAmendoim}, LocalDateTime.now());
+		System.out.println(refeicao);
 		
 		
 		inicializarGUI(primaryStage);

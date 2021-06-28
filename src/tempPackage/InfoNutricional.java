@@ -27,8 +27,7 @@ public final class InfoNutricional {
 
 	@Override
 	public String toString() {
-		return "Valor Energetico:" + valEnergetico + ", proteína=" + proteina + ", carboidratos:"
-				+ carboidratos;
+		return String.format("{InfoNutricional: %s, %s, %s}", valEnergetico, proteina, carboidratos);
 	}
 
 	@Override

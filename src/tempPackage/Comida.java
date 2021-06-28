@@ -26,6 +26,6 @@ public class Comida {
 
 	@Override
 	public String toString() {
-		return String.format("Comida [nome=%s, infoNutricional=%s]", nome, infoNutricional);
+		return String.format("{Comida: nome=\"%s\", %s}", nome, infoNutricional);
 	}
 }
