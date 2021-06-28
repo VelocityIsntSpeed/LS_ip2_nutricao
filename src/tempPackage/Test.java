@@ -1,38 +1,41 @@
 package tempPackage;
 
+import java.io.IOException;
+
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Test extends Application {
-
-	@FXML private TextField txtFieldNome;
-	@FXML private TextField txtFieldValEnergetico;
-	@FXML private TextField txtFieldProteina;
-	@FXML private TextField txtFieldCarboidratos;
 	
-	private RepositorioComidas repoComidas = new RepositorioComidas();
+	public RepositorioComidas repoComidas = new RepositorioComidas();
 	
 	public static void main(String[] args) {
-		InfoNutricional infoNut = new InfoNutricional(0, 0, 0);
-		System.out.println(infoNut);
-		
-		Comida c1 = new Comida("Arroz", infoNut);
-		System.out.println(c1);
-		
-		
-		
-		
-		Application.launch();
+		Application.launch(); // O JavaFX chama o método start
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) throws IOException {
+		
+		// Inicialização dos dados (temporário, só para testes)
+		InfoNutricional infoNutZero = new InfoNutricional(0, 0, 0);
+		System.out.println(infoNutZero);
+		
+		Comida arroz = new Comida("Arroz", infoNutZero);
+		System.out.println(arroz);
+		
+		System.out.println(repoComidas);
+		repoComidas.add(arroz);
+		System.out.println(repoComidas);
+		
+		
+		inicializarGUI(primaryStage);
+	}
+	
+	private void inicializarGUI(Stage primaryStage) throws IOException {
+		
 		primaryStage.setTitle("LSSS App nutrição");
 		
 		FXMLLoader loader = new FXMLLoader();
@@ -41,10 +44,9 @@ public class Test extends Application {
 		
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
-	}
-	
-	@FXML
-	private void btnAddComida(ActionEvent event) {
 		
+		// Fornece ao controller uma referência à esse objeto
+		TelaComidasController controller = loader.getController();
+		controller.setInstanciaDoApp(this);
 	}
 }
