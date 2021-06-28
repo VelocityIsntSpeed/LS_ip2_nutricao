@@ -45,7 +45,7 @@ public class Test extends Application {
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
 		
-		// Fornece ao controller uma referência à esse objeto
+		// Fornece ao controller uma referência a esse objeto
 		TelaComidasController controller = loader.getController();
 		controller.setInstanciaDoApp(this);
 	}

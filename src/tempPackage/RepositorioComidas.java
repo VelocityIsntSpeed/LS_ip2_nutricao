@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class RepositorioComidas {
 	private ArrayList<Comida> comidas = new ArrayList<Comida>();
 	
-	// Adiciona uma comida. */
+	/** Adiciona uma comida. */
 	public void add(Comida arg) {
 		if (arg != null && !comidas.contains(arg)) {
 			comidas.add(arg);
@@ -22,15 +22,11 @@ public class RepositorioComidas {
 		return null;
 	}
 	
-	/** Remove uma comida. */
+	/** Remove uma comida.
+	 * @return true se a comida foi removida, false se não foi removida
+	 * porque a comida não estava contida no repositório. */
 	public boolean remover(Comida arg) {
 		return comidas.remove(arg);
-	}
-
-	
-	public String listarComidas() {
-		//Será modificada futuramente de maneira a retornar algo mais útil para a GUI
-		return this.toString();
 	}
 	
 	@Override
@@ -41,7 +37,4 @@ public class RepositorioComidas {
 		}
 		return "Comidas cadastradas: /n" + strTemp;
 	}
-	
-	
-	
 }
