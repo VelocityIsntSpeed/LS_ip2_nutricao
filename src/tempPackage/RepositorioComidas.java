@@ -2,14 +2,13 @@ package tempPackage;
 import java.util.ArrayList;
 
 public class RepositorioComidas {
-	private ArrayList<Comida> comidas;
+	private ArrayList<Comida> comidas = new ArrayList<Comida>();
 	
 	// Adiciona uma comida. */
 	public void add(Comida arg) {
 		if (arg != null && !comidas.contains(arg)) {
 			comidas.add(arg);
 		}
-		
 	}
 	
 	/** Busca uma comida por nome. */
