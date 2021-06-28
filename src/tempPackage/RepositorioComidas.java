@@ -1,9 +1,16 @@
 package tempPackage;
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class RepositorioComidas {
-	private ArrayList<Comida> comidas = new ArrayList<Comida>();
+	/** ObservableList pode ser usado como um ArrayList. A diferença é que é possível
+	 * setar observadores que são notificados quando há alguma mudança na lista. */
+	private ObservableList<Comida> comidas = FXCollections.observableArrayList();
 	
+	public ObservableList<Comida> getObservableList() {
+		return comidas;
+	}
+
 	/** Adiciona uma comida. */
 	public void add(Comida arg) {
 		if (arg != null && !comidas.contains(arg)) {

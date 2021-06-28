@@ -2,21 +2,28 @@ package tempPackage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class TelaComidasController {
+
+	@FXML private TextField txtFieldNome;
+	@FXML private TextField txtFieldValEnergetico;
+	@FXML private TextField txtFieldProteina;
+	@FXML private TextField txtFieldCarboidratos;
+	
+	@FXML private ListView<Comida> listViewComidas;
+	
 	
 	/** Referência à instância de Application. */
 	private Test instanciaDoApp;
 	
 	public void setInstanciaDoApp(Test instanciaDoApp) {
 		this.instanciaDoApp = instanciaDoApp;
+		
+		// Configura a ListView pra sempre mostrar o conteúdo do RepositorioComidas
+		listViewComidas.setItems(instanciaDoApp.repoComidas.getObservableList());
 	}
-
-	@FXML private TextField txtFieldNome;
-	@FXML private TextField txtFieldValEnergetico;
-	@FXML private TextField txtFieldProteina;
-	@FXML private TextField txtFieldCarboidratos;
 	
 	// TODO Quire #23 #24
 	@FXML private void btnAddComida(ActionEvent event) {
