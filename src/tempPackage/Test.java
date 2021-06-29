@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Test extends Application {
@@ -45,17 +45,15 @@ public class Test extends Application {
 	
 	private void inicializarGUI(Stage primaryStage) throws IOException {
 		
-		primaryStage.setTitle("LSSS App nutrição");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("TelaComidas.fxml"));
+		Parent root = loader.load();
 		
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("TelaComidas.fxml"));
-		VBox root = (VBox) loader.load();
-		
-		primaryStage.setScene(new Scene(root));
-		primaryStage.show();
-		
-		// Fornece ao controller uma referência a esse objeto
+		// Fornece ao controller uma referência ao objeto atual
 		TelaComidasController controller = loader.getController();
 		controller.setInstanciaDoApp(this);
+
+		primaryStage.setScene(new Scene(root));
+		primaryStage.setTitle("LSSS App nutrição");
+		primaryStage.show();
 	}
 }
