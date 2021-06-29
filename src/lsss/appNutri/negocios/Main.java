@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lsss.appNutri.gui.TelaComidasController;
 
-public class Test extends Application {
+public class Main extends Application {
 	
 	public RepositorioComidas repoComidas = new RepositorioComidas();
 	

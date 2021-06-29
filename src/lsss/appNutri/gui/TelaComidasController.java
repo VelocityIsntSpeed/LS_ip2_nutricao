@@ -7,7 +7,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import lsss.appNutri.negocios.Comida;
 import lsss.appNutri.negocios.InfoNutricional;
-import lsss.appNutri.negocios.Test;
+import lsss.appNutri.negocios.Main;
 
 public class TelaComidasController {
 
@@ -21,9 +21,9 @@ public class TelaComidasController {
 	
 	
 	/** Referência à instância de Application. */
-	private Test instanciaDoApp;
+	private Main instanciaDoApp;
 	
-	public void setInstanciaDoApp(Test instanciaDoApp) {
+	public void setInstanciaDoApp(Main instanciaDoApp) {
 		this.instanciaDoApp = instanciaDoApp;
 		
 		// Configura a ListView pra sempre mostrar o conteúdo do RepositorioComidas
