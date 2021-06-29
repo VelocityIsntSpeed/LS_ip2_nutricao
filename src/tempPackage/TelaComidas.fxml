@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tempPackage.TelaComidasController">
+<VBox alignment="CENTER" spacing="5.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tempPackage.TelaComidasController">
    <children>
-      <HBox alignment="TOP_CENTER">
+      <HBox alignment="CENTER" spacing="5.0">
          <children>
             <VBox layoutX="10.0" layoutY="10.0">
                <children>
@@ -38,6 +41,15 @@
             <Button mnemonicParsing="false" onAction="#btnAddComida" text="Adicionar Comida" />
          </children>
       </HBox>
+      <Separator />
+      <Label text="Comidas cadastradas" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
       <ListView fx:id="listViewComidas" prefHeight="200.0" prefWidth="200.0" />
    </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </VBox>
