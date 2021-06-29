@@ -25,6 +25,10 @@ public class TelaComidasController {
 		
 		// Configura a ListView pra sempre mostrar o conteúdo do RepositorioComidas
 		listViewComidas.setItems(instanciaDoApp.repoComidas.getObservableList());
+		
+		// Faz com que o botão de remover comida fique desativado se não houver comida selecionada
+		listViewComidas.getSelectionModel().selectedItemProperty().addListener(
+				(observable, oldValue, newValue) -> btnRemoverComida.setDisable(newValue == null));
 	}
 	
 	/** É chamado quando o botão de adicionar comida é clicado. TODO Quire #23 #24 */
@@ -46,7 +50,6 @@ public class TelaComidasController {
 	
 	/** É chamado quando o botão de remover comida é clicado. */
 	@FXML private void onBtnRemoverComida(ActionEvent event) {
-		System.out.println("Botão de remover comida foi clicado."); // TODO: tirar isso
 		
 		Comida comidaASerRemovida = listViewComidas.getSelectionModel().getSelectedItem();
 		
