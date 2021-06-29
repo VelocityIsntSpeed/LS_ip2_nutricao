@@ -1,4 +1,4 @@
-package tempPackage;
+package lsss.appNutri.negocios;
 
 public class MetasDiarias {
 	private InfoNutricional nutrientes;

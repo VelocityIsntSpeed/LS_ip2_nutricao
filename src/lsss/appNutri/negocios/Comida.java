@@ -1,4 +1,4 @@
-package tempPackage;
+package lsss.appNutri.negocios;
 
 public class Comida {
 	private String nome;

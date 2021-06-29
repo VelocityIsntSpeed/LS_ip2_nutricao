@@ -1,4 +1,4 @@
-package tempPackage;
+package lsss.appNutri.negocios;
 import java.util.Objects;
 
 /** Representa uma lista de nutrientes. */

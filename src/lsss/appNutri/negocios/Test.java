@@ -1,4 +1,4 @@
-package tempPackage;
+package lsss.appNutri.negocios;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lsss.appNutri.gui.TelaComidasController;
 
 public class Test extends Application {
 	
@@ -45,7 +46,7 @@ public class Test extends Application {
 	
 	private void inicializarGUI(Stage primaryStage) throws IOException {
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("TelaComidas.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/TelaComidas.fxml"));
 		Parent root = loader.load();
 		
 		// Fornece ao controller uma referência ao objeto atual
