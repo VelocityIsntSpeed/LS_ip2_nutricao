@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import lsss.appNutri.negocios.Comida;
 import lsss.appNutri.negocios.InfoNutricional;
 import lsss.appNutri.negocios.Main;
+import lsss.appNutri.negocios.Refeicao;
 
 public class GuiController {
 
@@ -19,6 +20,9 @@ public class GuiController {
 	@FXML private ListView<Comida> listViewComidas;
 	@FXML private Button btnRemoverComida;
 	
+	@FXML private ListView<Refeicao> listViewRefeicoes;
+	@FXML private Button btnRemoverRefeicao;
+	
 	
 	/** Referência à instância de Application. */
 	private Main instanciaDoApp;
@@ -26,12 +30,15 @@ public class GuiController {
 	public void setInstanciaDoApp(Main instanciaDoApp) {
 		this.instanciaDoApp = instanciaDoApp;
 		
-		// Configura a ListView pra sempre mostrar o conteúdo do RepositorioComidas
+		// Configura as ListViews pra sempre mostrar os conteúdos do repositorios
 		listViewComidas.setItems(instanciaDoApp.repoComidas.getObservableList());
+		listViewRefeicoes.setItems(instanciaDoApp.repoRefeicoes.getObservableList());
 		
-		// Faz com que o botão de remover comida fique desativado se não houver comida selecionada
+		// Faz com que os botões de remover fiquem desativados se não houver nada selecionado na lista
 		listViewComidas.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> btnRemoverComida.setDisable(newValue == null));
+		listViewRefeicoes.getSelectionModel().selectedItemProperty().addListener(
+				(observable, oldValue, newValue) -> btnRemoverRefeicao.setDisable(newValue == null));
 	}
 	
 	/** É chamado quando o botão de adicionar comida é clicado. TODO Quire #23 #24 */
