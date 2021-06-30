@@ -68,5 +68,17 @@ public class GuiController {
 		// Desseleciona para impedir que o usuário delete algo acidentalmente
 		listViewComidas.getSelectionModel().clearSelection();
 	}
+	
+	/** É chamado quando o botão de remover refeição é clicado. */
+	@FXML private void onBtnRemoverRefeicao(ActionEvent event) {
+		
+		Refeicao refeicaoASerRemovida = listViewRefeicoes.getSelectionModel().getSelectedItem();
+		
+		instanciaDoApp.repoRefeicoes.remover(refeicaoASerRemovida);
+		
+		// Desseleciona para impedir que o usuário delete algo acidentalmente
+		listViewRefeicoes.getSelectionModel().clearSelection();
+	}
+	
 }
 
