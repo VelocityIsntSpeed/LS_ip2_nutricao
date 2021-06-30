@@ -1,5 +1,7 @@
 package lsss.appNutri.gui;
 
+import java.time.LocalDateTime;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -56,6 +58,13 @@ public class GuiController {
 		txtFieldValEnergetico.clear();
 		txtFieldProteina.clear();
 		txtFieldCarboidratos.clear();
+	}
+	
+	/** É chamado quando o botão de adicionar refeição é clicado. */
+	@FXML private void onBtnAddRefeicao(ActionEvent event) {
+		System.out.println("Botão de add refeição foi acionado.");
+		
+		instanciaDoApp.repoRefeicoes.add(new Refeicao(new Comida[]{}, LocalDateTime.now()));
 	}
 	
 	/** É chamado quando o botão de remover comida é clicado. */

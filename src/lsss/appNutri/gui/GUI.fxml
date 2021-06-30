@@ -66,7 +66,7 @@
          <content>
             <VBox alignment="CENTER" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" text="Adicionar Refeição" textAlignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#onBtnAddRefeicao" text="Adicionar Refeição" textAlignment="CENTER" />
                   <Separator />
                   <Label text="Refeições" textAlignment="CENTER">
                      <font>
