@@ -9,7 +9,7 @@ import lsss.appNutri.negocios.Comida;
 import lsss.appNutri.negocios.InfoNutricional;
 import lsss.appNutri.negocios.Main;
 
-public class TelaComidasController {
+public class GuiController {
 
 	@FXML private TextField txtFieldNome;
 	@FXML private TextField txtFieldValEnergetico;

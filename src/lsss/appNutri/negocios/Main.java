@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import lsss.appNutri.gui.TelaComidasController;
+import lsss.appNutri.gui.GuiController;
 
 public class Main extends Application {
 	
@@ -46,11 +46,11 @@ public class Main extends Application {
 	
 	private void inicializarGUI(Stage primaryStage) throws IOException {
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/TelaComidas.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/GUI.fxml"));
 		Parent root = loader.load();
 		
 		// Fornece ao controller uma referência ao objeto atual
-		TelaComidasController controller = loader.getController();
+		GuiController controller = loader.getController();
 		controller.setInstanciaDoApp(this);
 
 		primaryStage.setScene(new Scene(root));
