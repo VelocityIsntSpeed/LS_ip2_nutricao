@@ -13,6 +13,7 @@ import lsss.appNutri.gui.GuiController;
 public class Main extends Application {
 	
 	public RepositorioComidas repoComidas = new RepositorioComidas();
+	public RepositorioRefeicoes repoRefeicoes = new RepositorioRefeicoes();
 	
 	public static void main(String[] args) {
 		Application.launch(); // O JavaFX chama o método start
@@ -23,22 +24,26 @@ public class Main extends Application {
 		
 		// Inicialização dos dados (temporário, só para testes)
 		System.out.println(repoComidas);
+		System.out.println(repoRefeicoes);
 		
 		InfoNutricional infoNutZero = new InfoNutricional(0, 0, 0);
-		System.out.println(infoNutZero);
 		
 		Comida arroz = new Comida("Arroz", infoNutZero);
-		System.out.println(arroz);
-		
 		Comida pastaDeAmendoim = new Comida("Pasta de Amendoim", infoNutZero);
+		Comida sucoDeLaranja = new Comida("Suco de Laranja", infoNutZero);
 		
 		repoComidas.add(arroz);
 		repoComidas.add(pastaDeAmendoim);
 		repoComidas.add(arroz); // duplicado
 		System.out.println(repoComidas);
 		
-		Refeicao refeicao = new Refeicao(new Comida[]{arroz, pastaDeAmendoim}, LocalDateTime.now());
-		System.out.println(refeicao);
+		Refeicao r1 = new Refeicao(new Comida[]{arroz, pastaDeAmendoim}, LocalDateTime.now());
+		System.out.println(r1);
+		Refeicao r2 = new Refeicao(new Comida[]{arroz, pastaDeAmendoim, sucoDeLaranja}, LocalDateTime.now());
+		
+		repoRefeicoes.add(r1);
+		repoRefeicoes.add(r2);
+		System.out.println(repoRefeicoes);
 		
 		
 		inicializarGUI(primaryStage);
