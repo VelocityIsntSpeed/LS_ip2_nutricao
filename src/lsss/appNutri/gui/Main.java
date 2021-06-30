@@ -1,4 +1,4 @@
-package lsss.appNutri.negocios;
+package lsss.appNutri.gui;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -8,7 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import lsss.appNutri.gui.GuiController;
+import lsss.appNutri.negocios.Comida;
+import lsss.appNutri.negocios.InfoNutricional;
+import lsss.appNutri.negocios.Refeicao;
+import lsss.appNutri.negocios.RepositorioComidas;
+import lsss.appNutri.negocios.RepositorioRefeicoes;
 
 public class Main extends Application {
 	

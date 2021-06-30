@@ -9,7 +9,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import lsss.appNutri.negocios.Comida;
 import lsss.appNutri.negocios.InfoNutricional;
-import lsss.appNutri.negocios.Main;
 import lsss.appNutri.negocios.Refeicao;
 
 public class GuiController {
