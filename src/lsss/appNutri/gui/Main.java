@@ -31,11 +31,11 @@ public class Main extends Application {
 		System.out.println(repoComidas);
 		System.out.println(repoRefeicoes);
 		
-		InfoNutricional infoNutZero = new InfoNutricional(0, 0, 0);
+		InfoNutricional infoNut1 = new InfoNutricional(100, 1, 20);
 		
-		Comida arroz = new Comida("Arroz", infoNutZero);
-		Comida pastaDeAmendoim = new Comida("Pasta de Amendoim", infoNutZero);
-		Comida sucoDeLaranja = new Comida("Suco de Laranja", infoNutZero);
+		Comida arroz = new Comida("Arroz", infoNut1);
+		Comida pastaDeAmendoim = new Comida("Pasta de Amendoim", infoNut1);
+		Comida sucoDeLaranja = new Comida("Suco de Laranja", infoNut1);
 		
 		repoComidas.add(arroz);
 		repoComidas.add(pastaDeAmendoim);
@@ -43,12 +43,14 @@ public class Main extends Application {
 		System.out.println(repoComidas);
 		
 		Refeicao r1 = new Refeicao(new Comida[]{arroz, pastaDeAmendoim}, LocalDateTime.now());
-		System.out.println(r1);
 		Refeicao r2 = new Refeicao(new Comida[]{arroz, pastaDeAmendoim, sucoDeLaranja}, LocalDateTime.now());
 		
 		repoRefeicoes.add(r1);
 		repoRefeicoes.add(r2);
 		System.out.println(repoRefeicoes);
+		
+		InfoNutricional infoNut2 = new InfoNutricional(240, 8, 15);
+		System.out.println(infoNut1.mais(infoNut2));
 		
 		
 		inicializarGUI(primaryStage);

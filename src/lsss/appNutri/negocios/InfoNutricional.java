@@ -20,9 +20,13 @@ public final class InfoNutricional {
 		this.carboidratos = carboidratos;
 	}
 	
-	public InfoNutricional soma(InfoNutricional info) {
-		InfoNutricional temp = new InfoNutricional(this.valEnergetico+ info.getValEnergetico(), this.proteina + info.getProteina(), this.carboidratos + info.getCarboidratos());
-		return temp;
+	/** @return Um novo InfoNutricional que é a soma desse com o do argumento. */
+	public InfoNutricional mais(InfoNutricional outro) {
+		if (outro == null) throw new IllegalArgumentException("O argumento não pode ser nulo.");
+		
+		return new InfoNutricional(this.valEnergetico + outro.getValEnergetico(),
+				                   this.proteina + outro.getProteina(),
+				                   this.carboidratos + outro.getCarboidratos());
 	}
 
 	@Override
