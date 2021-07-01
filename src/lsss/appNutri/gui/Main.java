@@ -16,8 +16,8 @@ import lsss.appNutri.negocios.RepositorioRefeicoes;
 
 public class Main extends Application {
 	
-	public RepositorioComidas repoComidas = new RepositorioComidas();
-	public RepositorioRefeicoes repoRefeicoes = new RepositorioRefeicoes();
+	public final RepositorioComidas repoComidas = new RepositorioComidas();
+	public final RepositorioRefeicoes repoRefeicoes = new RepositorioRefeicoes();
 	
 	public static void main(String[] args) {
 		Application.launch(); // O JavaFX chama o método start
@@ -27,6 +27,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		
 		// Inicialização dos dados (temporário, só para testes)
+		
 		System.out.println(repoComidas);
 		System.out.println(repoRefeicoes);
 		

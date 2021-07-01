@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 public class RepositorioRefeicoes {
 	/** ObservableList pode ser usado como um ArrayList. A diferença é que é possível
 	 * setar observadores que são notificados quando há alguma mudança na lista. */
-	private ObservableList<Refeicao> refeicoes = FXCollections.observableArrayList();
+	private final ObservableList<Refeicao> refeicoes = FXCollections.observableArrayList();
 	
 	public ObservableList<Refeicao> getObservableList() {
 		return refeicoes;

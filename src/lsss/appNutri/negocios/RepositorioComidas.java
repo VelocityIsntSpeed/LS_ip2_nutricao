@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 public class RepositorioComidas {
 	/** ObservableList pode ser usado como um ArrayList. A diferença é que é possível
 	 * setar observadores que são notificados quando há alguma mudança na lista. */
-	private ObservableList<Comida> comidas = FXCollections.observableArrayList();
+	private final ObservableList<Comida> comidas = FXCollections.observableArrayList();
 	
 	public ObservableList<Comida> getObservableList() {
 		return comidas;
