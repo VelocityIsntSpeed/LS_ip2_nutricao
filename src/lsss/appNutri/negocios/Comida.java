@@ -5,7 +5,6 @@ public class Comida {
 	private InfoNutricional infoNutricional;
 	
 	public Comida(String nome, InfoNutricional infoNutricional) {
-		super();
 		this.nome = nome;
 		this.infoNutricional = infoNutricional;
 	}

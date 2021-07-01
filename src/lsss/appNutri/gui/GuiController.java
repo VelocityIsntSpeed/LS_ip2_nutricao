@@ -25,11 +25,11 @@ public class GuiController {
 	@FXML private Button btnRemoverRefeicao;
 	
 	
-	/** Referência à instância de Application. */
-	private Main instanciaDoApp;
+	/** Referência à instância de Main. */
+	private Main instanciaDeMain;
 	
-	public void setInstanciaDoApp(Main instanciaDoApp) {
-		this.instanciaDoApp = instanciaDoApp;
+	public void setInstanciaDeMain(Main instanciaDoApp) {
+		this.instanciaDeMain = instanciaDoApp;
 		
 		// Configura as ListViews pra sempre mostrar os conteúdos do repositorios
 		listViewComidas.setItems(instanciaDoApp.repoComidas.getObservableList());
@@ -50,7 +50,7 @@ public class GuiController {
 				                                      Double.parseDouble(txtFieldCarboidratos.getText()));
 		Comida comida = new Comida(txtFieldNome.getText(), infoNut);
 		
-		instanciaDoApp.repoComidas.add(comida);
+		instanciaDeMain.repoComidas.add(comida);
 		
 		// Limpa os campos
 		txtFieldNome.clear();
@@ -63,7 +63,7 @@ public class GuiController {
 	@FXML private void onBtnAddRefeicao(ActionEvent event) {
 		System.out.println("Botão de add refeição foi acionado.");
 		
-		instanciaDoApp.repoRefeicoes.add(new Refeicao(new Comida[]{}, LocalDateTime.now()));
+		instanciaDeMain.repoRefeicoes.add(new Refeicao(new Comida[]{}, LocalDateTime.now()));
 	}
 	
 	/** É chamado quando o botão de remover comida é clicado. */
@@ -71,7 +71,7 @@ public class GuiController {
 		
 		Comida comidaASerRemovida = listViewComidas.getSelectionModel().getSelectedItem();
 		
-		instanciaDoApp.repoComidas.remover(comidaASerRemovida);
+		instanciaDeMain.repoComidas.remover(comidaASerRemovida);
 		
 		// Desseleciona para impedir que o usuário delete algo acidentalmente
 		listViewComidas.getSelectionModel().clearSelection();
@@ -82,7 +82,7 @@ public class GuiController {
 		
 		Refeicao refeicaoASerRemovida = listViewRefeicoes.getSelectionModel().getSelectedItem();
 		
-		instanciaDoApp.repoRefeicoes.remover(refeicaoASerRemovida);
+		instanciaDeMain.repoRefeicoes.remover(refeicaoASerRemovida);
 		
 		// Desseleciona para impedir que o usuário delete algo acidentalmente
 		listViewRefeicoes.getSelectionModel().clearSelection();

@@ -16,12 +16,13 @@ import lsss.appNutri.negocios.RepositorioRefeicoes;
 
 public class Main extends Application {
 	
+	public static void main(String[] args) {
+		Application.launch(); // O JavaFX cria uma instancia de Main e chama o metodo start nela
+	}
+	
+	// Atributos
 	public final RepositorioComidas repoComidas = new RepositorioComidas();
 	public final RepositorioRefeicoes repoRefeicoes = new RepositorioRefeicoes();
-	
-	public static void main(String[] args) {
-		Application.launch(); // O JavaFX chama o método start
-	}
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -61,9 +62,9 @@ public class Main extends Application {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/GUI.fxml"));
 		Parent root = loader.load();
 		
-		// Fornece ao controller uma referência ao objeto atual
+		// Fornece ao controller uma referência à instância de Main
 		GuiController controller = loader.getController();
-		controller.setInstanciaDoApp(this);
+		controller.setInstanciaDeMain(this);
 
 		primaryStage.setScene(new Scene(root));
 		primaryStage.setTitle("LSSS App nutrição");
