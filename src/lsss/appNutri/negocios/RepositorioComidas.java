@@ -18,17 +18,6 @@ public class RepositorioComidas {
 		}
 	}
 	
-	/** Busca uma comida por nome. */
-	public Comida buscar(String nome) {
-		for (Comida comida : comidas) {
-			if (comida.getNome().equals(nome)) {
-				return comida;
-			}
-		}
-		// Se não for encontrado
-		return null;
-	}
-	
 	/** Remove uma comida.
 	 * @return true se a comida foi removida, false se não foi removida
 	 * porque a comida não estava contida no repositório. */
