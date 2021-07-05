@@ -4,7 +4,10 @@ import java.time.LocalDateTime;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import lsss.appNutri.negocios.Comida;
@@ -69,12 +72,18 @@ public class GuiController {
 	/** É chamado quando o botão de remover comida é clicado. */
 	@FXML private void onBtnRemoverComida(ActionEvent event) {
 		
-		Comida comidaASerRemovida = listViewComidas.getSelectionModel().getSelectedItem();
+		var alert = new Alert(AlertType.CONFIRMATION,
+				"Tem certeza de que quer remover as comidas selecionadas? Essa ação não pode ser desfeita.");
 		
-		instanciaDeMain.repoComidas.remover(comidaASerRemovida);
-		
-		// Desseleciona para impedir que o usuário delete algo acidentalmente
-		listViewComidas.getSelectionModel().clearSelection();
+		alert.showAndWait().ifPresent(response -> {
+			if (response == ButtonType.OK) {
+				instanciaDeMain.repoComidas.remover(
+					listViewComidas.getSelectionModel().getSelectedItem()
+				);
+				// Desseleciona pq outro item é selecionado automaticamente dps da remoção:
+				listViewComidas.getSelectionModel().clearSelection();
+			}
+		});
 	}
 	
 	/** É chamado quando o botão de remover refeição é clicado. */
@@ -83,10 +92,9 @@ public class GuiController {
 		Refeicao refeicaoASerRemovida = listViewRefeicoes.getSelectionModel().getSelectedItem();
 		
 		instanciaDeMain.repoRefeicoes.remover(refeicaoASerRemovida);
-		
-		// Desseleciona para impedir que o usuário delete algo acidentalmente
+
+		// Desseleciona pq outro item é selecionado automaticamente dps da remoção:
 		listViewRefeicoes.getSelectionModel().clearSelection();
 	}
-	
 }
 
