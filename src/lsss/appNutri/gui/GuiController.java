@@ -1,6 +1,7 @@
 package lsss.appNutri.gui;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import lsss.appNutri.negocios.Comida;
@@ -66,7 +68,18 @@ public class GuiController {
 	@FXML private void onBtnAddRefeicao(ActionEvent event) {
 		System.out.println("Botão de add refeição foi acionado.");
 		
-		instanciaDeMain.repoRefeicoes.add(new Refeicao(new Comida[]{}, LocalDateTime.now()));
+		var dialog = new Dialog<Refeicao>();
+		dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+		
+		// O result converter deve retornar a nova comida, ou nulo se o buttonType for de cancelamento.
+		// TODO: De onde o resultConverter vai pegar o input do usuario pra gerar a refeicao corretamente?
+		dialog.setResultConverter(buttonType -> (buttonType == ButtonType.OK) ?
+				new Refeicao(new Comida[]{}, LocalDateTime.now()) : null);
+		
+		
+		dialog.showAndWait().ifPresent(refeicao -> {
+			instanciaDeMain.repoRefeicoes.add(refeicao);
+		});
 	}
 	
 	/** É chamado quando o botão de remover comida é clicado. */
