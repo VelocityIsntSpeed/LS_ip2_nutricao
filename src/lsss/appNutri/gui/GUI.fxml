@@ -14,6 +14,26 @@
 
 <TabPane tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lsss.appNutri.gui.GuiController">
    <tabs>
+      <Tab closable="false" text="Refeições">
+         <content>
+            <VBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onBtnAddRefeicao" text="Adicionar Refeição" textAlignment="CENTER" />
+                  <Separator />
+                  <Label text="Refeições" textAlignment="CENTER">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="listViewRefeicoes" />
+                  <Button fx:id="btnRemoverRefeicao" disable="true" mnemonicParsing="false" onAction="#onBtnRemoverRefeicao" text="Remover Refeição" textAlignment="CENTER" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </content>
+      </Tab>
       <Tab closable="false" text="Comidas">
          <content>
             <VBox alignment="CENTER" spacing="5.0">
@@ -55,26 +75,6 @@
                   </Label>
                   <ListView fx:id="listViewComidas" />
                   <Button fx:id="btnRemoverComida" disable="true" mnemonicParsing="false" onAction="#onBtnRemoverComida" text="Remover Comida" textAlignment="CENTER" />
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-         </content>
-      </Tab>
-      <Tab closable="false" text="Refeições">
-         <content>
-            <VBox alignment="CENTER" spacing="5.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#onBtnAddRefeicao" text="Adicionar Refeição" textAlignment="CENTER" />
-                  <Separator />
-                  <Label text="Refeições" textAlignment="CENTER">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="listViewRefeicoes" />
-                  <Button fx:id="btnRemoverRefeicao" disable="true" mnemonicParsing="false" onAction="#onBtnRemoverRefeicao" text="Remover Refeição" textAlignment="CENTER" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
