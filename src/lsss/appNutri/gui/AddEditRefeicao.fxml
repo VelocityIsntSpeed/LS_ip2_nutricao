@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 
-<DialogPane contentText="contenttext" headerText="headertext" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane headerText="headertext" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lsss.appNutri.gui.AddEditRefeicaoController">
    <buttonTypes>
       <ButtonType fx:constant="OK" />
       <ButtonType fx:constant="CANCEL" />
    </buttonTypes>
+   <content>
+      <VBox>
+         <children>
+            <DatePicker fx:id="datePicker" />
+            <Label text="O JavaFX não tem DateTimePicker, só DatePicker." />
+         </children>
+      </VBox>
+   </content>
 </DialogPane>
