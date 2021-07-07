@@ -1,13 +1,16 @@
 # LS_ip2_nutricao
+
 Projeto em grupo para a disciplina Introdução à Programação 2. Um programa que ajuda o usuário a cuidar da nutrição.
 
 ### Integrantes
+
 - [@VelocityIsntSpeed](https://github.com/VelocityIsntSpeed/)
   <br/> (Leandro Gabriel)
 - [@rksamu](https://github.com/rksamu/)
   <br/> (Samuel Justino)
 
 ## Descrição
+
 Um app que ajuda o usuário a cuidar da nutrição de forma prática. A pessoa registra o que comeu e ele conta as calorias, proteína, fibra, vitaminas, etc. e fornece relatórios, comparando com as metas definidas pelo usuário e recomendações. O usuário pode adicionar pratos e ingredientes personalizados ao banco de dados do app. Também ajuda a elaborar refeições saudáveis, mostrando a informação nutricional conforme a pessoa vai modificando a lista de ingredientes de uma refeição.
 
 ## Requisitos
@@ -22,4 +25,7 @@ Um app que ajuda o usuário a cuidar da nutrição de forma prática. A pessoa r
 5. Enquanto o usuário edita a lista de ingredientes de uma comida ou refeição, a informação nutricional é mostrada em tempo real.
 
 ## Diagrama de modelo navegacional da GUI
-![Diagrama](modelo-navegacional.png)
+![Diagrama de modelo navegacional da GUI](modelo-navegacional.png)
+
+## Diagrama de classes (desatualizado)
+![Diagrama de classes UML](diagrama-de-classes.png)
