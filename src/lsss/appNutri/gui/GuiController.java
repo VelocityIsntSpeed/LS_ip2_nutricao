@@ -1,10 +1,12 @@
 package lsss.appNutri.gui;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -69,7 +71,17 @@ public class GuiController {
 		System.out.println("Botão de add refeição foi acionado.");
 		
 		var dialog = new Dialog<Refeicao>();
-		dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+		
+		// A raiz do FXML é um DialogPane
+		var loader = new FXMLLoader(getClass().getResource("AddEditRefeicao.fxml"));
+		try {
+			dialog.setDialogPane(loader.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 		
 		// O result converter deve retornar a nova comida, ou nulo se o buttonType for de cancelamento.
 		// TODO: De onde o resultConverter vai pegar o input do usuario pra gerar a refeicao corretamente?
