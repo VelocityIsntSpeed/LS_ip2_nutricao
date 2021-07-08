@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lsss.appNutri.negocios.Comida;
 import lsss.appNutri.negocios.InfoNutricional;
@@ -54,20 +51,6 @@ public class Main extends Application {
 		System.out.println(infoNut1.mais(infoNut2));
 		
 		
-		inicializarGUI(primaryStage);
-	}
-	
-	private void inicializarGUI(Stage primaryStage) throws IOException {
-		
-		var loader = new FXMLLoader(getClass().getResource("JanelaPrincipal.fxml"));
-		Parent root = loader.load();
-		
-		// Fornece ao controller uma referência à instância de Main
-		JanelaPrincipal controller = loader.getController();
-		controller.setInstanciaDeMain(this);
-
-		primaryStage.setScene(new Scene(root));
-		primaryStage.setTitle("LSSS App nutrição");
-		primaryStage.show();
+		new JanelaPrincipal(primaryStage, this);
 	}
 }

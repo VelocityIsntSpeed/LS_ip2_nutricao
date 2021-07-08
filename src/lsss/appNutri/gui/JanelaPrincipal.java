@@ -1,13 +1,19 @@
 package lsss.appNutri.gui;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import lsss.appNutri.negocios.Comida;
 import lsss.appNutri.negocios.InfoNutricional;
 import lsss.appNutri.negocios.Refeicao;
@@ -29,19 +35,43 @@ public class JanelaPrincipal {
 	/** Referência à instância de Main. */
 	private Main instanciaDeMain;
 	
-	public void setInstanciaDeMain(Main instanciaDoApp) {
-		this.instanciaDeMain = instanciaDoApp;
+	/** Construtor.
+	 * @param instanciaDeMain Referência à instância de Main
+	 * @param primaryStage    Stage fornecido no método start
+	 */
+	public JanelaPrincipal(Stage primaryStage, Main instanciaDeMain) {
 		
-		// Configura as ListViews pra sempre mostrar os conteúdos do repositorios
-		listViewComidas.setItems(instanciaDoApp.repoComidas.getObservableList());
-		listViewRefeicoes.setItems(instanciaDoApp.repoRefeicoes.getObservableList());
+		this.instanciaDeMain = instanciaDeMain;
 		
-		// Faz com que os botões de remover fiquem desativados se não houver nada selecionado na lista
-		listViewComidas.getSelectionModel().selectedItemProperty().addListener(
-				(observable, oldValue, newValue) -> btnRemoverComida.setDisable(newValue == null));
-		listViewRefeicoes.getSelectionModel().selectedItemProperty().addListener(
-				(observable, oldValue, newValue) -> btnRemoverRefeicao.setDisable(newValue == null));
+		try {
+			// Obs.: O controller do FXML é a instância atual.
+			var loader = new FXMLLoader(getClass().getResource("JanelaPrincipal.fxml"));
+			loader.setController(this);
+			Parent root = loader.load();
+			primaryStage.setScene(new Scene(root));
+		}
+		catch (IOException e) { e.printStackTrace(); }
+		
+		primaryStage.setTitle("LSSS App nutrição");
+		primaryStage.show();
 	}
+	
+	@FXML private void initialize() {
+		// Configura as ListViews pra sempre mostrar os conteúdos do repositorios
+		listViewComidas.setItems(instanciaDeMain.repoComidas.getObservableList());
+		listViewRefeicoes.setItems(instanciaDeMain.repoRefeicoes.getObservableList());
+		
+		// Faz com que os botões de remover fiquem ativados se e apenas se houver algum
+		// item selecionado na lista.
+		listViewComidas.getSelectionModel().selectedItemProperty()
+				.addListener((observable, oldValue, newValue) ->
+						btnRemoverComida.setDisable(newValue == null));
+		
+		listViewRefeicoes.getSelectionModel().selectedItemProperty()
+				.addListener((observable, oldValue, newValue) ->
+						btnRemoverRefeicao.setDisable(newValue == null));
+	}
+	
 	
 	/** É chamado quando o botão de adicionar comida é clicado. TODO Quire #23 #24 */
 	@FXML private void onBtnAddComida(ActionEvent event) {
