@@ -63,7 +63,7 @@ public class Main extends Application {
 		Parent root = loader.load();
 		
 		// Fornece ao controller uma referência à instância de Main
-		GuiController controller = loader.getController();
+		JanelaPrincipal controller = loader.getController();
 		controller.setInstanciaDeMain(this);
 
 		primaryStage.setScene(new Scene(root));
