@@ -59,7 +59,7 @@ public class Main extends Application {
 	
 	private void inicializarGUI(Stage primaryStage) throws IOException {
 		
-		var loader = new FXMLLoader(getClass().getResource("GUI.fxml"));
+		var loader = new FXMLLoader(getClass().getResource("JanelaPrincipal.fxml"));
 		Parent root = loader.load();
 		
 		// Fornece ao controller uma referência à instância de Main
