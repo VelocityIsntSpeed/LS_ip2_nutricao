@@ -66,24 +66,8 @@ public class GuiController {
 	
 	/** É chamado quando o botão de adicionar refeição é clicado. */
 	@FXML private void onBtnAddRefeicao(ActionEvent event) {
-		System.out.println("Botão de add refeição foi acionado.");
 		
-		var dialog = new Dialog<Refeicao>();
-		
-		// A raiz do FXML é um DialogPane, que é colocado no Dialog
-		var loader = new FXMLLoader(getClass().getResource("AddEditRefeicao.fxml"));
-		try {
-			dialog.setDialogPane(loader.load());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		// O result converter é chamado pelo JavaFX quando um Dialog é fechado
-		AddEditRefeicaoController controller = loader.getController();
-		dialog.setResultConverter(controller::resultConverter);
-		
-		
-		dialog.showAndWait().ifPresent(refeicao -> {
+		(new AddEditRefeicaoDialog()).showAndWait().ifPresent(refeicao -> {
 			instanciaDeMain.repoRefeicoes.add(refeicao);
 		});
 	}
