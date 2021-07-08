@@ -12,26 +12,21 @@ import javafx.scene.control.Dialog;
 import lsss.appNutri.negocios.Comida;
 import lsss.appNutri.negocios.Refeicao;
 
+/**
+ * Um Dialog pré-configurado, só precisa instanciar e chamar showAndWait. O
+ * resultado é do tipo Refeicao.
+ */
 public class AddEditRefeicaoDialog extends Dialog<Refeicao> {
 	
-	// Controller do FXML do DialogPane
-	public final class Controller {
-		@FXML private DatePicker datePicker;
-
-		public DatePicker getDatePicker() {
-			return datePicker;
-		}
-	}
-	
-	// Referência ao controller
-	private Controller controller = new Controller();
+	@FXML private DatePicker datePicker;
 	
 	// Construtor
 	public AddEditRefeicaoDialog() {
-		// Carrega o DialogPane que está no FXML
+		// Carrega o FXML, cuja raiz é um DialogPane.
+		// Obs.: O controller do FXML é a classe atual.
 		try {
 			var loader = new FXMLLoader(getClass().getResource("AddEditRefeicao.fxml"));
-			loader.setController(controller);
+			loader.setController(this);
 			this.setDialogPane(loader.load());
 		}
 		catch (IOException e) { e.printStackTrace(); }
@@ -45,7 +40,7 @@ public class AddEditRefeicaoDialog extends Dialog<Refeicao> {
 			// Então por enquanto a hora utilizada é a hora atual.
 			return new Refeicao(
 					new Comida[] {},
-					LocalDateTime.of(controller.datePicker.getValue(), LocalTime.now()));
+					LocalDateTime.of(datePicker.getValue(), LocalTime.now()));
 		});
 	}
 }
