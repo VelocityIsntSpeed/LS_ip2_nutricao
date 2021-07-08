@@ -1,9 +1,6 @@
 package lsss.appNutri.gui;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.ListView;
@@ -82,20 +78,9 @@ public class GuiController {
 			e.printStackTrace();
 		}
 		
-		// O result converter retorna a nova refeicao
-		dialog.setResultConverter(buttonType -> {
-			// Retorna nulo se o dialog foi fechado sem ser pelo botão de OK:
-			if (buttonType.getButtonData() != ButtonData.OK_DONE) return null;
-			
-			AddEditRefeicaoController controller = loader.getController();
-			
-			// O JavaFX não tem DateTimePicker, só DatePicker. Então por enquanto a hora
-			// utilizada é a hora atual.
-			LocalDate localDate = controller.getDatePicker().getValue();
-			
-			return new Refeicao(new Comida[]{},
-					            LocalDateTime.of(localDate, LocalTime.now()));
-		});
+		// O result converter é chamado pelo JavaFX quando um Dialog é fechado
+		AddEditRefeicaoController controller = loader.getController();
+		dialog.setResultConverter(controller::resultConverter);
 		
 		
 		dialog.showAndWait().ifPresent(refeicao -> {
