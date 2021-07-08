@@ -7,6 +7,7 @@ import java.time.LocalTime;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Dialog;
 import lsss.appNutri.negocios.Comida;
@@ -23,7 +24,7 @@ public class DialogAddEditRefeicao extends Dialog<Refeicao> {
 	// Construtor
 	public DialogAddEditRefeicao() {
 		// Carrega o FXML, cuja raiz é um DialogPane.
-		// Obs.: O controller do FXML é a classe atual.
+		// Obs.: O controller do FXML é a instância atual.
 		try {
 			var loader = new FXMLLoader(getClass().getResource("AddEditRefeicao.fxml"));
 			loader.setController(this);
@@ -32,15 +33,16 @@ public class DialogAddEditRefeicao extends Dialog<Refeicao> {
 		catch (IOException e) { e.printStackTrace(); }
 		
 		// Seta o resultConverter (é chamado pelo JavaFX quando o Dialog é fechado)
-		this.setResultConverter(buttonType -> {
-			if (buttonType.getButtonData() != ButtonData.OK_DONE)
-				return null;
+		this.setResultConverter(this::resultConverter);
+	}
+	
+	private Refeicao resultConverter(ButtonType buttonType) {
+		if (buttonType.getButtonData() != ButtonData.OK_DONE)
+			return null;
 
-			// O JavaFX não tem DateTimePicker, só DatePicker.
-			// Então por enquanto a hora utilizada é a hora atual.
-			return new Refeicao(
-					new Comida[] {},
-					LocalDateTime.of(datePicker.getValue(), LocalTime.now()));
-		});
+		// O JavaFX não tem DateTimePicker, só DatePicker.
+		// TODO: Então por enquanto a hora utilizada é a hora atual.
+		return new Refeicao(new Comida[] {}, LocalDateTime.of(datePicker.getValue(),
+				                                              LocalTime.now()));
 	}
 }
