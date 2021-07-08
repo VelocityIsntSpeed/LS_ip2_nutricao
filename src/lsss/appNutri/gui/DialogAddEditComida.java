@@ -11,6 +11,10 @@ import javafx.scene.control.TextField;
 import lsss.appNutri.negocios.Comida;
 import lsss.appNutri.negocios.InfoNutricional;
 
+/**
+ * Um Dialog pré-configurado, só precisa instanciar e chamar showAndWait. O
+ * resultado é uma Comida válida.
+ */
 public class DialogAddEditComida extends Dialog<Comida> {
 	
 	@FXML private TextField txtFieldNome;

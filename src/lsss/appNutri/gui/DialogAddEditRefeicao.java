@@ -15,7 +15,7 @@ import lsss.appNutri.negocios.Refeicao;
 
 /**
  * Um Dialog pré-configurado, só precisa instanciar e chamar showAndWait. O
- * resultado é do tipo Refeicao.
+ * resultado é uma Refeicao válida.
  */
 public class DialogAddEditRefeicao extends Dialog<Refeicao> {
 	

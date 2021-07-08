@@ -12,10 +12,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lsss.appNutri.negocios.Comida;
-import lsss.appNutri.negocios.InfoNutricional;
 import lsss.appNutri.negocios.Refeicao;
 
 public class JanelaPrincipal {
@@ -50,6 +48,7 @@ public class JanelaPrincipal {
 		primaryStage.show();
 	}
 	
+	// É Chamado após o JavaFX seta os atributos FXML
 	@FXML private void initialize() {
 		// Configura as ListViews pra sempre mostrar os conteúdos do repositorios
 		listViewComidas.setItems(instanciaDeMain.repoComidas.getObservableList());
@@ -67,7 +66,7 @@ public class JanelaPrincipal {
 	}
 	
 	
-	/** É chamado quando o botão de adicionar comida é clicado. TODO Quire #23 #24 */
+	/** É chamado quando o botão de adicionar comida é clicado. */
 	@FXML private void onBtnAddComida(ActionEvent event) {
 		
 		(new DialogAddEditComida()).showAndWait().ifPresent(comida -> {
