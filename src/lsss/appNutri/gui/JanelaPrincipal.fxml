@@ -9,7 +9,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -73,34 +72,6 @@
                      <children>
                         <Button mnemonicParsing="false" onAction="#onBtnAddComida" text="Adicionar..." />
                         <Button fx:id="btnRemoverComida" disable="true" mnemonicParsing="false" onAction="#onBtnRemoverComida" text="Remover" textAlignment="CENTER" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" spacing="5.0">
-                     <children>
-                        <VBox layoutX="10.0" layoutY="10.0">
-                           <children>
-                              <Label text="Nome" wrapText="true" />
-                              <TextField fx:id="txtFieldNome" />
-                           </children>
-                        </VBox>
-                        <VBox>
-                           <children>
-                              <Label text="Valor Energético (kcal)" wrapText="true" />
-                              <TextField fx:id="txtFieldValEnergetico" />
-                           </children>
-                        </VBox>
-                        <VBox layoutX="36.0" layoutY="10.0">
-                           <children>
-                              <Label text="Proteína (g)" wrapText="true" />
-                              <TextField fx:id="txtFieldProteina" />
-                           </children>
-                        </VBox>
-                        <VBox layoutX="159.0" layoutY="10.0">
-                           <children>
-                              <Label text="Carboidratos (g)" wrapText="true" />
-                              <TextField fx:id="txtFieldCarboidratos" />
-                           </children>
-                        </VBox>
                      </children>
                   </HBox>
                </children>

@@ -20,17 +20,11 @@ import lsss.appNutri.negocios.Refeicao;
 
 public class JanelaPrincipal {
 
-	@FXML private TextField txtFieldNome;
-	@FXML private TextField txtFieldValEnergetico;
-	@FXML private TextField txtFieldProteina;
-	@FXML private TextField txtFieldCarboidratos;
-	
-	@FXML private ListView<Comida> listViewComidas;
-	@FXML private Button btnRemoverComida;
-	
 	@FXML private ListView<Refeicao> listViewRefeicoes;
 	@FXML private Button btnRemoverRefeicao;
 	
+	@FXML private ListView<Comida> listViewComidas;
+	@FXML private Button btnRemoverComida;
 	
 	/** Referência à instância de Main. */
 	private Main instanciaDeMain;
@@ -76,18 +70,9 @@ public class JanelaPrincipal {
 	/** É chamado quando o botão de adicionar comida é clicado. TODO Quire #23 #24 */
 	@FXML private void onBtnAddComida(ActionEvent event) {
 		
-		InfoNutricional infoNut = new InfoNutricional(Double.parseDouble(txtFieldValEnergetico.getText()),
-				                                      Double.parseDouble(txtFieldProteina.getText()),
-				                                      Double.parseDouble(txtFieldCarboidratos.getText()));
-		Comida comida = new Comida(txtFieldNome.getText(), infoNut);
-		
-		instanciaDeMain.repoComidas.add(comida);
-		
-		// Limpa os campos
-		txtFieldNome.clear();
-		txtFieldValEnergetico.clear();
-		txtFieldProteina.clear();
-		txtFieldCarboidratos.clear();
+		(new DialogAddEditComida()).showAndWait().ifPresent(comida -> {
+			instanciaDeMain.repoComidas.add(comida);
+		});
 	}
 	
 	/** É chamado quando o botão de adicionar refeição é clicado. */
