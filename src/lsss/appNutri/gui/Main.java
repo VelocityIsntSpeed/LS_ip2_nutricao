@@ -26,29 +26,24 @@ public class Main extends Application {
 		
 		// Inicialização dos dados (temporário, só para testes)
 		
-		System.out.println(repoComidas);
-		System.out.println(repoRefeicoes);
-		
 		InfoNutricional infoNut1 = new InfoNutricional(100, 1, 20);
+		InfoNutricional infoNut2 = new InfoNutricional(240, 8, 15);
+		System.out.println(infoNut1.mais(infoNut2));
 		
-		Comida arroz = new Comida("Arroz", infoNut1);
+		Comida arroz = new Comida("Arroz", infoNut2);
 		Comida pastaDeAmendoim = new Comida("Pasta de Amendoim", infoNut1);
 		Comida sucoDeLaranja = new Comida("Suco de Laranja", infoNut1);
 		
 		repoComidas.add(arroz);
 		repoComidas.add(pastaDeAmendoim);
+		repoComidas.add(sucoDeLaranja);
 		repoComidas.add(arroz); // duplicado
-		System.out.println(repoComidas);
 		
-		Refeicao r1 = new Refeicao(new Comida[]{arroz, pastaDeAmendoim}, LocalDateTime.now());
-		Refeicao r2 = new Refeicao(new Comida[]{arroz, pastaDeAmendoim, sucoDeLaranja}, LocalDateTime.now());
+		repoRefeicoes.add(new Refeicao(
+				new Comida[]{arroz, pastaDeAmendoim}, LocalDateTime.now()));
+		repoRefeicoes.add(new Refeicao(
+				new Comida[]{arroz, pastaDeAmendoim, sucoDeLaranja}, LocalDateTime.now()));
 		
-		repoRefeicoes.add(r1);
-		repoRefeicoes.add(r2);
-		System.out.println(repoRefeicoes);
-		
-		InfoNutricional infoNut2 = new InfoNutricional(240, 8, 15);
-		System.out.println(infoNut1.mais(infoNut2));
 		
 		
 		new JanelaPrincipal(primaryStage, this);
