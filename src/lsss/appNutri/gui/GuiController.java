@@ -67,7 +67,7 @@ public class GuiController {
 	/** É chamado quando o botão de adicionar refeição é clicado. */
 	@FXML private void onBtnAddRefeicao(ActionEvent event) {
 		
-		(new AddEditRefeicaoDialog()).showAndWait().ifPresent(refeicao -> {
+		(new DialogAddEditRefeicao()).showAndWait().ifPresent(refeicao -> {
 			instanciaDeMain.repoRefeicoes.add(refeicao);
 		});
 	}

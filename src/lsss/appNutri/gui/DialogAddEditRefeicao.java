@@ -16,12 +16,12 @@ import lsss.appNutri.negocios.Refeicao;
  * Um Dialog pré-configurado, só precisa instanciar e chamar showAndWait. O
  * resultado é do tipo Refeicao.
  */
-public class AddEditRefeicaoDialog extends Dialog<Refeicao> {
+public class DialogAddEditRefeicao extends Dialog<Refeicao> {
 	
 	@FXML private DatePicker datePicker;
 	
 	// Construtor
-	public AddEditRefeicaoDialog() {
+	public DialogAddEditRefeicao() {
 		// Carrega o FXML, cuja raiz é um DialogPane.
 		// Obs.: O controller do FXML é a classe atual.
 		try {
