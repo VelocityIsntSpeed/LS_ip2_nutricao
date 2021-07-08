@@ -2,6 +2,8 @@ package lsss.appNutri.gui;
 
 import java.io.IOException;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import lsss.appNutri.negocios.Comida;
 import lsss.appNutri.negocios.Refeicao;
@@ -21,8 +25,12 @@ public class JanelaPrincipal {
 	@FXML private ListView<Refeicao> listViewRefeicoes;
 	@FXML private Button btnRemoverRefeicao;
 	
-	@FXML private ListView<Comida> listViewComidas;
+	@FXML private TableView<Comida> tableViewComidas;
 	@FXML private Button btnRemoverComida;
+	@FXML private TableColumn<Comida, String> comidasColNome;
+	@FXML private TableColumn<Comida, Double> comidasColValEnergetico;
+	@FXML private TableColumn<Comida, Double> comidasColProteina;
+	@FXML private TableColumn<Comida, Double> comidasColCarboidratos;
 	
 	/** Referência à instância de Main. */
 	private Main instanciaDeMain;
@@ -51,12 +59,32 @@ public class JanelaPrincipal {
 	// É Chamado após o JavaFX seta os atributos FXML
 	@FXML private void initialize() {
 		// Configura as ListViews pra sempre mostrar os conteúdos do repositorios
-		listViewComidas.setItems(instanciaDeMain.repoComidas.getObservableList());
 		listViewRefeicoes.setItems(instanciaDeMain.repoRefeicoes.getObservableList());
 		
+		// Configura TableView
+
+		tableViewComidas.setItems(instanciaDeMain.repoComidas.getObservableList());
+
+		comidasColNome.setCellValueFactory(cellDataFeatures ->
+				new ReadOnlyStringWrapper(cellDataFeatures.getValue().getNome()));
+
+		comidasColValEnergetico.setCellValueFactory(cellDataFeatures ->
+				new ReadOnlyObjectWrapper<Double>(
+						cellDataFeatures.getValue().getInfoNutricional().getValEnergetico()));
+		
+		comidasColProteina.setCellValueFactory(cellDataFeatures ->
+				new ReadOnlyObjectWrapper<Double>(
+						cellDataFeatures.getValue().getInfoNutricional().getProteina()));
+		
+		comidasColCarboidratos.setCellValueFactory(cellDataFeatures ->
+				new ReadOnlyObjectWrapper<Double>(
+						cellDataFeatures.getValue().getInfoNutricional().getCarboidratos()));
+		
+
+		
 		// Faz com que os botões de remover fiquem ativados se e apenas se houver algum
-		// item selecionado na lista.
-		listViewComidas.getSelectionModel().selectedItemProperty()
+		// item selecionado.
+		tableViewComidas.getSelectionModel().selectedItemProperty()
 				.addListener((observable, oldValue, newValue) ->
 						btnRemoverComida.setDisable(newValue == null));
 		
@@ -91,10 +119,9 @@ public class JanelaPrincipal {
 		alert.showAndWait().ifPresent(response -> {
 			if (response == ButtonType.OK) {
 				instanciaDeMain.repoComidas.remover(
-					listViewComidas.getSelectionModel().getSelectedItem()
-				);
+						tableViewComidas.getSelectionModel().getSelectedItem());
 				// Desseleciona pq outro item é selecionado automaticamente dps da remoção:
-				listViewComidas.getSelectionModel().clearSelection();
+				tableViewComidas.getSelectionModel().clearSelection();
 			}
 		});
 	}

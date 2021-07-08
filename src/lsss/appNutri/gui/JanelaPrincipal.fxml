@@ -9,6 +9,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -67,7 +69,14 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="listViewComidas" />
+                  <TableView fx:id="tableViewComidas">
+                    <columns>
+                      <TableColumn fx:id="comidasColNome" text="Nome" />
+                      <TableColumn fx:id="comidasColValEnergetico" text="Valor energético (kcal)" />
+                        <TableColumn fx:id="comidasColProteina" text="Proteína (g)" />
+                        <TableColumn fx:id="comidasColCarboidratos" text="Carboidratos (g)" />
+                    </columns>
+                  </TableView>
                   <HBox alignment="CENTER" spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#onBtnAddComida" text="Adicionar..." />
