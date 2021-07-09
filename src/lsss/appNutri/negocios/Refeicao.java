@@ -4,28 +4,24 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 public class Refeicao {
+	
+	/** Lista de comidas que fazem parte dessa refeição. Pode estar vazia. */
 	private Comida[] comidas;
 	/** Hora em que a refeicao foi consumida. */
 	private LocalDateTime dateTime;
 	
 	
 	public Refeicao(Comida[] comidas, LocalDateTime dateTime) {
-		super();
 		this.comidas = comidas;
 		this.dateTime = dateTime;
 	}
 	
-	public Comida[] getComidas() {
-		return comidas;
-	}
-	public void setComidas(Comida[] comidas) {
-		this.comidas = comidas;
-	}
-	public LocalDateTime getDateTime() {
-		return dateTime;
-	}
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
+	
+	/** // TODO Incompleto. Usar InfoNutricional.soma
+	 * @return A informação nutricional da refeição (somando de todas as comidas).
+	 */
+	public InfoNutricional getInfoNutricional() {
+		return new InfoNutricional(0, 0, 0);
 	}
 	
 	public String toString() {
@@ -42,5 +38,21 @@ public class Refeicao {
 			}
 			return strTemp;
 		}
+	}
+	
+	// TODO equals e hashCode
+
+	
+	public Comida[] getComidas() {
+		return comidas;
+	}
+	public void setComidas(Comida[] comidas) {
+		this.comidas = comidas;
+	}
+	public LocalDateTime getDateTime() {
+		return dateTime;
+	}
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
 	}
 }
