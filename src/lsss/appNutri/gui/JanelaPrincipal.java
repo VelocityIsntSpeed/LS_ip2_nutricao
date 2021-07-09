@@ -1,6 +1,7 @@
 package lsss.appNutri.gui;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -13,7 +14,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -22,8 +22,12 @@ import lsss.appNutri.negocios.Refeicao;
 
 public class JanelaPrincipal {
 
-	@FXML private ListView<Refeicao> listViewRefeicoes;
+	@FXML private TableView<Refeicao> tableViewRefeicoes;
 	@FXML private Button btnRemoverRefeicao;
+	@FXML private TableColumn<Refeicao, LocalDateTime> refeicoesColDateTime;
+	@FXML private TableColumn<Refeicao, Double> refeicoesColValEnergetico;
+	@FXML private TableColumn<Refeicao, Double> refeicoesColProteina;
+	@FXML private TableColumn<Refeicao, Double> refeicoesColCarboidratos;
 	
 	@FXML private TableView<Comida> tableViewComidas;
 	@FXML private Button btnRemoverComida;
@@ -58,11 +62,8 @@ public class JanelaPrincipal {
 	
 	// É Chamado após o JavaFX seta os atributos FXML
 	@FXML private void initialize() {
-		// Configura as ListViews pra sempre mostrar os conteúdos do repositorios
-		listViewRefeicoes.setItems(instanciaDeMain.repoRefeicoes.getObservableList());
 		
-		// Configura TableView
-
+		// Configura TableView comidas
 		tableViewComidas.setItems(instanciaDeMain.repoComidas.getObservableList());
 
 		comidasColNome.setCellValueFactory(cellDataFeatures ->
@@ -80,6 +81,25 @@ public class JanelaPrincipal {
 				new ReadOnlyObjectWrapper<Double>(
 						cellDataFeatures.getValue().getInfoNutricional().getCarboidratos()));
 		
+		
+		// Configura TableView refeicoes
+		tableViewRefeicoes.setItems(instanciaDeMain.repoRefeicoes.getObservableList());
+
+		refeicoesColDateTime.setCellValueFactory(cellDataFeatures ->
+				new ReadOnlyObjectWrapper<LocalDateTime>(cellDataFeatures.getValue().getDateTime()));
+
+		refeicoesColValEnergetico.setCellValueFactory(cellDataFeatures ->
+				new ReadOnlyObjectWrapper<Double>(
+						cellDataFeatures.getValue().getInfoNutricional().getValEnergetico()));
+		
+		refeicoesColProteina.setCellValueFactory(cellDataFeatures ->
+				new ReadOnlyObjectWrapper<Double>(
+						cellDataFeatures.getValue().getInfoNutricional().getProteina()));
+		
+		refeicoesColCarboidratos.setCellValueFactory(cellDataFeatures ->
+				new ReadOnlyObjectWrapper<Double>(
+						cellDataFeatures.getValue().getInfoNutricional().getCarboidratos()));
+		
 
 		
 		// Faz com que os botões de remover fiquem ativados se e apenas se houver algum
@@ -88,7 +108,7 @@ public class JanelaPrincipal {
 				.addListener((observable, oldValue, newValue) ->
 						btnRemoverComida.setDisable(newValue == null));
 		
-		listViewRefeicoes.getSelectionModel().selectedItemProperty()
+		tableViewRefeicoes.getSelectionModel().selectedItemProperty()
 				.addListener((observable, oldValue, newValue) ->
 						btnRemoverRefeicao.setDisable(newValue == null));
 	}
@@ -129,12 +149,17 @@ public class JanelaPrincipal {
 	/** É chamado quando o botão de remover refeição é clicado. */
 	@FXML private void onBtnRemoverRefeicao(ActionEvent event) {
 		
-		Refeicao refeicaoASerRemovida = listViewRefeicoes.getSelectionModel().getSelectedItem();
+		var alert = new Alert(AlertType.CONFIRMATION,
+				"Tem certeza de que quer remover as refeições selecionadas? Essa ação não pode ser desfeita.");
 		
-		instanciaDeMain.repoRefeicoes.remover(refeicaoASerRemovida);
-
-		// Desseleciona pq outro item é selecionado automaticamente dps da remoção:
-		listViewRefeicoes.getSelectionModel().clearSelection();
+		alert.showAndWait().ifPresent(response -> {
+			if (response == ButtonType.OK) {
+				instanciaDeMain.repoRefeicoes.remover(
+						tableViewRefeicoes.getSelectionModel().getSelectedItem());
+				// Desseleciona pq outro item é selecionado automaticamente dps da remoção:
+				tableViewRefeicoes.getSelectionModel().clearSelection();
+			}
+		});
 	}
 }
 
