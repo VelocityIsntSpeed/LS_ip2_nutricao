@@ -53,6 +53,10 @@ public class Refeicao {
 	// TODO equals e hashCode
 
 	
+	public int getQuantidadeComida() {
+		return comidas.length;
+	}
+	
 	public Comida[] getComidas() {
 		return comidas;
 	}
