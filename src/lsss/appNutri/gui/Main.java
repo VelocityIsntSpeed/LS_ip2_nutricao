@@ -39,10 +39,12 @@ public class Main extends Application {
 		repoComidas.add(sucoDeLaranja);
 		repoComidas.add(arroz); // duplicado
 		
-		repoRefeicoes.add(new Refeicao(
-				new Comida[]{arroz, pastaDeAmendoim}, LocalDateTime.now()));
-		repoRefeicoes.add(new Refeicao(
-				new Comida[]{arroz, pastaDeAmendoim, sucoDeLaranja}, LocalDateTime.now()));
+		repoRefeicoes.add(new Refeicao(new Comida[]{arroz},
+                                       LocalDateTime.now().minusDays(10)));
+		repoRefeicoes.add(new Refeicao(new Comida[]{arroz, pastaDeAmendoim},
+				                       LocalDateTime.now().minusHours(30)));
+		repoRefeicoes.add(new Refeicao(new Comida[]{arroz, pastaDeAmendoim, sucoDeLaranja},
+							           LocalDateTime.now().minusHours(1)));
 		
 		
 		

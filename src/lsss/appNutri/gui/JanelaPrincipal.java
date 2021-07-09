@@ -2,14 +2,20 @@ package lsss.appNutri.gui;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.stream.Collectors;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -36,13 +42,14 @@ public class JanelaPrincipal {
 	@FXML private TableColumn<Comida, Float> comidasColProteina;
 	@FXML private TableColumn<Comida, Float> comidasColCarboidratos;
 	
+	@FXML private LineChart<Number, Number> lineChart;
+	
 	/** Referência à instância de Main. */
 	private Main instanciaDeMain;
 	
 	/** Construtor.
 	 * @param instanciaDeMain Referência à instância de Main
-	 * @param primaryStage    Stage fornecido no método start
-	 */
+	 * @param primaryStage    Stage fornecido no método start */
 	public JanelaPrincipal(Stage primaryStage, Main instanciaDeMain) {
 		
 		this.instanciaDeMain = instanciaDeMain;
@@ -62,7 +69,11 @@ public class JanelaPrincipal {
 	
 	// É Chamado após o JavaFX seta os atributos FXML
 	@FXML private void initialize() {
-		
+		inicializarTableViews();
+		tempGrafico();
+	}
+	
+	private void inicializarTableViews() {
 		// Configura TableView comidas
 		tableViewComidas.setItems(instanciaDeMain.repoComidas.getObservableList());
 
@@ -100,7 +111,6 @@ public class JanelaPrincipal {
 				new ReadOnlyObjectWrapper<Float>(
 						cellDataFeatures.getValue().getInfoNutricional().getCarboidratos()));
 		
-
 		
 		// Faz com que os botões de remover fiquem ativados se e apenas se houver algum
 		// item selecionado.
@@ -111,6 +121,23 @@ public class JanelaPrincipal {
 		tableViewRefeicoes.getSelectionModel().selectedItemProperty()
 				.addListener((observable, oldValue, newValue) ->
 						btnRemoverRefeicao.setDisable(newValue == null));
+	}
+	
+	private void tempGrafico() {
+		
+        ObservableList<XYChart.Data<Number, Number>> obsListDataPoints;
+        
+        obsListDataPoints = instanciaDeMain.repoRefeicoes.getObservableList()
+        		.stream().map(refeicao -> {
+        			var valEnergetico = refeicao.getInfoNutricional().getValEnergetico();
+        			var dateTimeNumber = refeicao.getDateTime().toEpochSecond(ZoneOffset.of("-03:00"));
+        			return new XYChart.Data<Number, Number>(dateTimeNumber, valEnergetico);
+        		})
+        		.collect(Collectors.toCollection(FXCollections::observableArrayList));
+        
+        var seriesValEnergetico = new XYChart.Series<Number, Number>("Valores energéticos (kcal)", obsListDataPoints);
+        
+        lineChart.getData().add(seriesValEnergetico);
 	}
 	
 	

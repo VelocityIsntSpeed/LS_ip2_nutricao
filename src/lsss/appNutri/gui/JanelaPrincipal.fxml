@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -50,12 +49,12 @@
          <content>
             <VBox alignment="CENTER" spacing="5.0">
                <children>
-                  <LineChart>
+                  <LineChart fx:id="lineChart" title="Consumo diário de nutrientes">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <NumberAxis forceZeroInRange="false" label="Dia" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" />
+                      <NumberAxis label="kcal ou g" side="LEFT" />
                     </yAxis>
                   </LineChart>
                   <Button mnemonicParsing="false" text="Definir Metas Diárias..." textAlignment="CENTER" />
