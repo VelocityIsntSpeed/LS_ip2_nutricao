@@ -66,11 +66,11 @@ public final class InfoNutricional {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		// Gerado automaticamente pelo Eclipse. Não sei porque o doubleToLongBits, tem a ver com -0.0 ou NaN.
 		InfoNutricional other = (InfoNutricional) obj;
-		return Double.doubleToLongBits(carboidratos) == Double.doubleToLongBits(other.carboidratos)
-				&& Double.doubleToLongBits(proteina) == Double.doubleToLongBits(other.proteina)
-				&& Double.doubleToLongBits(valEnergetico) == Double.doubleToLongBits(other.valEnergetico);
+		// Gerado automaticamente pelo Eclipse. Não sei porque o floatToIntBits, tem a ver com -0.0 ou NaN.
+		return Float.floatToIntBits(carboidratos) == Float.floatToIntBits(other.carboidratos)
+				&& Float.floatToIntBits(proteina) == Float.floatToIntBits(other.proteina)
+				&& Float.floatToIntBits(valEnergetico) == Float.floatToIntBits(other.valEnergetico);
 	}
 
 	@Override
