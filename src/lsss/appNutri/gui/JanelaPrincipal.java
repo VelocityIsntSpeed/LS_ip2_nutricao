@@ -25,16 +25,16 @@ public class JanelaPrincipal {
 	@FXML private TableView<Refeicao> tableViewRefeicoes;
 	@FXML private Button btnRemoverRefeicao;
 	@FXML private TableColumn<Refeicao, LocalDateTime> refeicoesColDateTime;
-	@FXML private TableColumn<Refeicao, Double> refeicoesColValEnergetico;
-	@FXML private TableColumn<Refeicao, Double> refeicoesColProteina;
-	@FXML private TableColumn<Refeicao, Double> refeicoesColCarboidratos;
+	@FXML private TableColumn<Refeicao, Float> refeicoesColValEnergetico;
+	@FXML private TableColumn<Refeicao, Float> refeicoesColProteina;
+	@FXML private TableColumn<Refeicao, Float> refeicoesColCarboidratos;
 	
 	@FXML private TableView<Comida> tableViewComidas;
 	@FXML private Button btnRemoverComida;
 	@FXML private TableColumn<Comida, String> comidasColNome;
-	@FXML private TableColumn<Comida, Double> comidasColValEnergetico;
-	@FXML private TableColumn<Comida, Double> comidasColProteina;
-	@FXML private TableColumn<Comida, Double> comidasColCarboidratos;
+	@FXML private TableColumn<Comida, Float> comidasColValEnergetico;
+	@FXML private TableColumn<Comida, Float> comidasColProteina;
+	@FXML private TableColumn<Comida, Float> comidasColCarboidratos;
 	
 	/** Referência à instância de Main. */
 	private Main instanciaDeMain;
@@ -70,15 +70,15 @@ public class JanelaPrincipal {
 				new ReadOnlyStringWrapper(cellDataFeatures.getValue().getNome()));
 
 		comidasColValEnergetico.setCellValueFactory(cellDataFeatures ->
-				new ReadOnlyObjectWrapper<Double>(
+				new ReadOnlyObjectWrapper<Float>(
 						cellDataFeatures.getValue().getInfoNutricional().getValEnergetico()));
 		
 		comidasColProteina.setCellValueFactory(cellDataFeatures ->
-				new ReadOnlyObjectWrapper<Double>(
+				new ReadOnlyObjectWrapper<Float>(
 						cellDataFeatures.getValue().getInfoNutricional().getProteina()));
 		
 		comidasColCarboidratos.setCellValueFactory(cellDataFeatures ->
-				new ReadOnlyObjectWrapper<Double>(
+				new ReadOnlyObjectWrapper<Float>(
 						cellDataFeatures.getValue().getInfoNutricional().getCarboidratos()));
 		
 		
@@ -89,15 +89,15 @@ public class JanelaPrincipal {
 				new ReadOnlyObjectWrapper<LocalDateTime>(cellDataFeatures.getValue().getDateTime()));
 
 		refeicoesColValEnergetico.setCellValueFactory(cellDataFeatures ->
-				new ReadOnlyObjectWrapper<Double>(
+				new ReadOnlyObjectWrapper<Float>(
 						cellDataFeatures.getValue().getInfoNutricional().getValEnergetico()));
 		
 		refeicoesColProteina.setCellValueFactory(cellDataFeatures ->
-				new ReadOnlyObjectWrapper<Double>(
+				new ReadOnlyObjectWrapper<Float>(
 						cellDataFeatures.getValue().getInfoNutricional().getProteina()));
 		
 		refeicoesColCarboidratos.setCellValueFactory(cellDataFeatures ->
-				new ReadOnlyObjectWrapper<Double>(
+				new ReadOnlyObjectWrapper<Float>(
 						cellDataFeatures.getValue().getInfoNutricional().getCarboidratos()));
 		
 
