@@ -2,6 +2,7 @@ package lsss.appNutri.negocios;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
 
 public class Refeicao {
 	
@@ -23,13 +24,15 @@ public class Refeicao {
 	}
 
 	
-	/** // TODO Incompleto. Usar InfoNutricional.soma
-	 * @return A informação nutricional da refeição (somando de todas as comidas).
-	 */
 	public InfoNutricional getInfoNutricional() {
-		return new InfoNutricional(0, 0, 0);
+		ArrayList<InfoNutricional> comidasInfoList = new ArrayList<>();
+		for(int i = 0; i < comidas.length; i++) {
+			comidasInfoList.add(comidas[i].getInfoNutricional());
+		}
+		InfoNutricional info = InfoNutricional.soma(comidasInfoList);
+		return info;
 	}
-	
+		
 	public String toString() {
 		String strTemp = String.format("Refeicao (%s):",
 				dateTime.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
