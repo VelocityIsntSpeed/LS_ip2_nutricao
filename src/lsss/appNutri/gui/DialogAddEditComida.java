@@ -43,9 +43,9 @@ public class DialogAddEditComida extends Dialog<Comida> {
 			return null;
 		
 		var infoNut = new InfoNutricional(
-			Double.parseDouble(txtFieldValEnergetico.getText()),
-			Double.parseDouble(txtFieldProteina.getText()),
-			Double.parseDouble(txtFieldCarboidratos.getText())
+			Float.parseFloat(txtFieldValEnergetico.getText()),
+			Float.parseFloat(txtFieldProteina.getText()),
+			Float.parseFloat(txtFieldCarboidratos.getText())
 		);
 
 		return new Comida(txtFieldNome.getText(), infoNut);
