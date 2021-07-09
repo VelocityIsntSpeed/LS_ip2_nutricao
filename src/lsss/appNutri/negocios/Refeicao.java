@@ -23,13 +23,17 @@ public class Refeicao {
 		this.dateTime = LocalDateTime.now();
 	}
 
+	/**
+	 * @return A informação nutricional da refeição (somando de todas as comidas).
+	 */
 	public InfoNutricional getInfoNutricional() {
-		ArrayList<InfoNutricional> comidasInfoList = new ArrayList<>();
-		for(int i = 0; i < comidas.length; i++) {
-			comidasInfoList.add(comidas[i].getInfoNutricional());
+		var infoNutList = new ArrayList<InfoNutricional>();
+		// Gera lista de InfoNutricional
+		for (Comida comida : comidas) {
+			infoNutList.add(comida.getInfoNutricional());
 		}
-		InfoNutricional info = InfoNutricional.soma(comidasInfoList);
-		return info;
+		
+		return InfoNutricional.soma(infoNutList);
 	}
 		
 	public String toString() {
