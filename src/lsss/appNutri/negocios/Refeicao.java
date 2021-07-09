@@ -23,7 +23,6 @@ public class Refeicao {
 		this.dateTime = LocalDateTime.now();
 	}
 
-	
 	public InfoNutricional getInfoNutricional() {
 		ArrayList<InfoNutricional> comidasInfoList = new ArrayList<>();
 		for(int i = 0; i < comidas.length; i++) {
