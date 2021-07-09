@@ -16,6 +16,12 @@ public class Refeicao {
 		this.dateTime = dateTime;
 	}
 	
+	public Refeicao(Comida[] comidas) {
+		super();
+		this.comidas = comidas;
+		this.dateTime = LocalDateTime.now();
+	}
+
 	
 	/** // TODO Incompleto. Usar InfoNutricional.soma
 	 * @return A informação nutricional da refeição (somando de todas as comidas).
