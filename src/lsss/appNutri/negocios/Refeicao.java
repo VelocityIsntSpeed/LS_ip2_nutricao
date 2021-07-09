@@ -18,9 +18,7 @@ public class Refeicao {
 	}
 	
 	public Refeicao(Comida[] comidas) {
-		super();
-		this.comidas = comidas;
-		this.dateTime = LocalDateTime.now();
+		this(comidas, LocalDateTime.now());
 	}
 
 	/**
