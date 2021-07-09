@@ -34,9 +34,9 @@ public final class InfoNutricional {
 	public InfoNutricional mais(InfoNutricional outro) {
 		if (outro == null) throw new IllegalArgumentException("O argumento não pode ser nulo.");
 		
-		return new InfoNutricional(this.valEnergetico + (float)outro.getValEnergetico(),
-				                   this.proteina + (float)outro.getProteina(),
-				                   this.carboidratos + (float)outro.getCarboidratos());
+		return new InfoNutricional(this.valEnergetico + outro.getValEnergetico(),
+				                   this.proteina + outro.getProteina(),
+				                   this.carboidratos + outro.getCarboidratos());
 	}
 	
 	public static InfoNutricional soma(Collection<InfoNutricional> infos) {
@@ -79,13 +79,13 @@ public final class InfoNutricional {
 	}
 
 	
-	public double getValEnergetico() {
+	public float getValEnergetico() {
 		return valEnergetico;
 	}
-	public double getProteina() {
+	public float getProteina() {
 		return proteina;
 	}
-	public double getCarboidratos() {
+	public float getCarboidratos() {
 		return carboidratos;
 	}
 }
