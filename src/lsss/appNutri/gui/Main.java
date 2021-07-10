@@ -26,25 +26,25 @@ public class Main extends Application {
 		
 		// Inicialização dos dados (temporário, só para testes)
 		
-		InfoNutricional infoNut1 = new InfoNutricional(100, 1, 20);
-		InfoNutricional infoNut2 = new InfoNutricional(240, 8, 15);
-		System.out.println(infoNut1.mais(infoNut2));
-		
-		Comida arroz = new Comida("Arroz", infoNut2);
-		Comida pastaDeAmendoim = new Comida("Pasta de Amendoim", infoNut1);
-		Comida sucoDeLaranja = new Comida("Suco de Laranja", infoNut1);
-		
-		repoComidas.add(arroz);
-		repoComidas.add(pastaDeAmendoim);
-		repoComidas.add(sucoDeLaranja);
-		repoComidas.add(arroz); // duplicado
-		
-		repoRefeicoes.add(new Refeicao(new Comida[]{arroz},
-                                       LocalDateTime.now().minusDays(10)));
-		repoRefeicoes.add(new Refeicao(new Comida[]{arroz, pastaDeAmendoim},
-				                       LocalDateTime.now().minusHours(30)));
-		repoRefeicoes.add(new Refeicao(new Comida[]{arroz, pastaDeAmendoim, sucoDeLaranja},
-							           LocalDateTime.now().minusHours(1)));
+//		InfoNutricional infoNut1 = new InfoNutricional(100, 1, 20);
+//		InfoNutricional infoNut2 = new InfoNutricional(240, 8, 15);
+//		System.out.println(infoNut1.mais(infoNut2));
+//		
+//		Comida arroz = new Comida("Arroz", infoNut2);
+//		Comida pastaDeAmendoim = new Comida("Pasta de Amendoim", infoNut1);
+//		Comida sucoDeLaranja = new Comida("Suco de Laranja", infoNut1);
+//		
+//		repoComidas.add(arroz);
+//		repoComidas.add(pastaDeAmendoim);
+//		repoComidas.add(sucoDeLaranja);
+//		repoComidas.add(arroz); // duplicado
+//		
+//		repoRefeicoes.add(new Refeicao(new Comida[]{arroz},
+//                                       LocalDateTime.now().minusDays(10)));
+//		repoRefeicoes.add(new Refeicao(new Comida[]{arroz, pastaDeAmendoim},
+//				                       LocalDateTime.now().minusHours(30)));
+//		repoRefeicoes.add(new Refeicao(new Comida[]{arroz, pastaDeAmendoim, sucoDeLaranja},
+//							           LocalDateTime.now().minusHours(1)));
 		
 		
 		
