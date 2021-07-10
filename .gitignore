@@ -1,3 +1,10 @@
+
+# É onde os dados do programa são salvos
+Comidas.txt
+Refeicoes.txt
+Metas.txt
+
+
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
 
