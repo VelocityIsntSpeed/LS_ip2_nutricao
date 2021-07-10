@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<DialogPane headerText="headertext" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane headerText="Adicionar Refeicao" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <buttonTypes>
       <ButtonType fx:constant="OK" />
       <ButtonType fx:constant="CANCEL" />
@@ -15,7 +15,8 @@
       <VBox>
          <children>
             <DatePicker fx:id="datePicker" />
-            <Label text="O JavaFX não tem DateTimePicker, só DatePicker." />
+            <Label text="Obs.: O JavaFX não tem DateTimePicker, só DatePicker. Por isso a hora utilizada vai ser a hora atual, mas a data funciona." wrapText="true" />
+            <Label layoutX="20.0" layoutY="45.0" text="Obs.: Não foi implementada a funcionalidade de escolher as comidas que fazem parte da refeicao. Por isso toda refeicao criada é vazia (sem comidas)." wrapText="true" />
          </children>
       </VBox>
    </content>

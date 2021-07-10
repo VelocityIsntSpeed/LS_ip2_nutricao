@@ -58,6 +58,8 @@
                     </yAxis>
                   </LineChart>
                   <Button mnemonicParsing="false" text="Definir Metas Diárias..." textAlignment="CENTER" />
+                  <Label text="Obs.: A funcionalidade de metas não foi implementada." wrapText="true" />
+                  <Label layoutX="15.0" layoutY="452.0" text="Obs.: O gráfico só atualiza se fechar e abrir o app de novo." wrapText="true" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
