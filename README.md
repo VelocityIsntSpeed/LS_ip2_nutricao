@@ -37,5 +37,5 @@ Um app que ajuda o usuário a cuidar da nutrição de forma prática. A pessoa r
 ## Diagrama de modelo navegacional da GUI
 ![Diagrama de modelo navegacional da GUI](modelo-navegacional.png)
 
-## Diagrama de classes (desatualizado)
+## Diagrama de classes
 ![Diagrama de classes UML](diagrama-de-classes.png)
