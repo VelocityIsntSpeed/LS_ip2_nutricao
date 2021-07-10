@@ -1,10 +1,11 @@
 package lsss.appNutri.negocios;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
 
-public class Refeicao {
+public class Refeicao implements Serializable {
 	
 	/** Lista de comidas que fazem parte dessa refeição. Pode estar vazia. */
 	private Comida[] comidas;

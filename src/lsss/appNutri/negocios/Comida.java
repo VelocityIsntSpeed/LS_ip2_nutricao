@@ -1,6 +1,8 @@
 package lsss.appNutri.negocios;
 
-public class Comida {
+import java.io.Serializable;
+
+public class Comida implements Serializable {
 	private String nome;
 	private InfoNutricional infoNutricional;
 	

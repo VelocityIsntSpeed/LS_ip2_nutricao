@@ -1,10 +1,11 @@
 package lsss.appNutri.negocios;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
 /** Representa uma lista de nutrientes. */
-public final class InfoNutricional {
+public final class InfoNutricional implements Serializable {
 	
 	private final float valEnergetico;
 	private final float proteina;
