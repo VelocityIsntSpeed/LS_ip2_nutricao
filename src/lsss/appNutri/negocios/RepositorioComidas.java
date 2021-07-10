@@ -10,6 +10,7 @@ public class RepositorioComidas {
 	private final ListaDAO dao = new ListaDAO("Comidas.txt");
 	
 	// Construtor
+	@SuppressWarnings("unchecked")
 	public RepositorioComidas() {
 		comidas = dao.carregar();
 	}

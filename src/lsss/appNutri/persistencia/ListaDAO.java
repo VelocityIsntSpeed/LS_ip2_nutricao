@@ -34,6 +34,7 @@ public class ListaDAO {
 				var arrayList = (ArrayList) ois.readObject();
 				ois.close();
 				
+				System.out.println("Carregamento bem sucedido, conteúdo: " + arrayList + "\n");
 				return FXCollections.observableArrayList(arrayList);
 			}
 			catch (IOException | ClassNotFoundException e) {
