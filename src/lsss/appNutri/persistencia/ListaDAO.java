@@ -1,6 +1,7 @@
 package lsss.appNutri.persistencia;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -24,18 +25,29 @@ public class ListaDAO {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ObservableList carregar() {
 		System.out.println("Carregando " + nomeDoArquivo);
+
 		try {
 			var fis = new FileInputStream(nomeDoArquivo);
-			var ois = new ObjectInputStream(fis);
-			var arrayList = (ArrayList) ois.readObject();
-			ois.close();
-			
-			return FXCollections.observableArrayList(arrayList);
-		}
-		catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-			System.exit(-1);
-			return null; // Nao é executado, mas o compilador obriga a retornar
+
+			try {
+				var ois = new ObjectInputStream(fis);
+				var arrayList = (ArrayList) ois.readObject();
+				ois.close();
+				
+				return FXCollections.observableArrayList(arrayList);
+			}
+			catch (IOException | ClassNotFoundException e) {
+				System.out.println(String.format("Erro ao carregar %s, pode estar corrompido.",
+						                         nomeDoArquivo));
+				e.printStackTrace();
+				System.exit(-1);
+				return null; // Nao é executado, mas o compilador obriga a retornar
+			}
+		} 
+		catch (FileNotFoundException e) {
+			// Arquivo não existe, retorna lista vazia
+			System.out.println(nomeDoArquivo + " não existe, portanto nenhum dado foi carregado.");
+			return FXCollections.observableArrayList();
 		}
 	}
 	
