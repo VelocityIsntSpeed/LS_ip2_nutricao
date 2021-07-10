@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Refeicao implements Serializable {
 	
@@ -50,10 +52,29 @@ public class Refeicao implements Serializable {
 			return strTemp;
 		}
 	}
-	
-	// TODO equals e hashCode
 
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(comidas);
+		result = prime * result + Objects.hash(dateTime);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Refeicao other = (Refeicao) obj;
+		return Arrays.equals(comidas, other.comidas) && Objects.equals(dateTime, other.dateTime);
+	}
+
 	public int getQuantidadeComida() {
 		return comidas.length;
 	}
